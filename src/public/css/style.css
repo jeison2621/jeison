@@ -1,0 +1,490 @@
+html{
+  min-height:  100%;
+  position: relative;
+ 
+}
+
+body{
+ margin: 0;
+ margin-bottom: 40px;
+ 
+  
+}
+
+main{
+  display: flex;  
+  background: white
+}
+
+
+/* 
+----------------------------------------
+archivos Generales que usa toda la app
+----------------------------------------
+-header
+-Footer
+-Banner
+----------------------------------------
+Vistas especificas (Ruta) 
+----------------------------------------
+-Home(/)
+------------
+
+*/
+
+
+
+/* ************************************************************************************************************
+------------------------------------------------ Header  --------------------------------------
+************************************************************************************************************ */
+
+header {
+  background: rgb(199, 109, 109);
+  text-align: center;
+  color: whitesmoke;
+  width: 99.5%;
+  
+}
+
+header .contenedor{
+  text-align: center;
+  flex-wrap: nowrap;
+  width: 100%;
+ }
+
+header .seccion-1{
+  display: flex;
+  background: #522d2d;
+  border-top: brown solid  1px;
+  padding: 5px;
+  height: 45px;
+}
+
+header .seccion-1 img{
+  position: relative;
+  width: 60px;
+  height: 25;
+  border-radius: 10%;
+  border :brown solid  1px
+}
+header .seccion-1 h1{
+  color: white;
+ 
+  
+}
+
+
+a{
+  text-decoration: none;
+  color: white ;
+}
+
+header .seccion-2{
+  display: flex;
+  justify-content: space-around;
+  border-top: brown solid  1px;
+  background: #522d2d;
+  padding: 5px;
+  height: 30px;
+  
+}
+
+header .seccion-3{
+  border-top: brown solid 1px;
+  width: 100%;
+  padding: 5px;
+  height: 45px;
+}
+
+@media (min-width: 480px) {
+  header .seccion-1{
+    border : brown double;
+    width: 40%;
+    padding: 5px;
+  }
+  
+  
+  
+  header .seccion-2{
+    border: brown double;
+    width: 60%;
+    height: 45px;
+    
+    padding: 5px;
+  }
+  
+  header .seccion-3{
+    border: brown double;
+    width: 30%;
+    padding: 5px;
+  }
+
+  header .contenedor{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    
+   }
+
+  
+
+  
+}
+
+
+
+/* ************************************************************************************************************
+------------------------------------------------ -------------------------------------- */
+/* ************************************************************************************************************
+
+------------------------------------------------ Footer  --------------------------------------
+************************************************************************************************************ */
+
+footer{
+
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  color: whitesmoke;
+  background: rgb(199, 109, 109);
+  color: whitesmoke;
+  position: absolute;
+  bottom: 0;    
+  
+
+}
+
+footer .contenedor{
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  background: red ;
+ }
+
+footer .seccion-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(199, 109, 109);
+  border-top: brown solid  1px;
+  width: 100%;
+  padding: 7px;
+  height: 65px;
+  flex-wrap: nowrap;
+}
+
+footer .seccion-1 h3{
+  margin-bottom: 1%;
+}
+
+.contenedor-redes {
+  padding: 15px;
+  color: white;
+}
+
+footer .seccion-2{
+  background: rgb(199, 109, 109);
+  border-top: brown solid  1px;
+  width: 100%;
+  padding: 7px;
+  height: 65px;
+}
+
+footer .seccion-3{
+  background: rgb(199, 109, 109);
+  border-top: brown solid 1px;
+  width: 100%;
+  padding: 7px;
+  height: 65px;
+}
+
+@media (min-width: 480px) {
+  footer .seccion-1{
+    border : brown double;
+    width: 33.3%;
+    padding: 5px;
+  }
+  
+  
+  footer .seccion-2{
+    border: brown double;
+    width: 33.3%;
+    
+    padding: 5px;
+  }
+  
+  footer .seccion-3{
+    border: brown double;
+    width: 33.3%;
+    padding: 5px;
+  }
+
+  footer .contenedor{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    
+   }
+
+  
+
+  
+}
+/* ************************************************************************************************************
+------------------------------------------------ --------------------------------------
+************************************************************************************************************ 
+------------------------------------------------ --------------------------------------
+
+------------------------------------------------ Banner -------------------------------------------------
+************************************************************************************************************ */
+
+.banner {
+  /* width: 100%; */
+  height: 40vh;
+
+  
+  
+}
+
+.banner img {
+   width: 100%; 
+  height: 40vh;
+ 
+}
+
+@media (min-width: 480px) {
+
+  .banner {
+     
+    height: 65vh;
+    
+  }
+
+  .banner img {
+    height: 65vh;
+    width: 99.5%; 
+    
+  }
+}
+
+
+
+/* *******************************************************************************************************************
+*********************************************************************************************************** */
+
+
+/* ----------------------------------------------- Home(/) -------------------------------------------------
+************************************************************************************************************ */
+main .seccion-contenedora{
+  background: white;
+  width: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  
+}
+
+main .articulo-productos{
+  width: 330px;
+  height: 300px;
+  margin: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  border-radius: 10%;
+  border: grey solid;
+  text-align: center;
+  
+}
+
+main .articulo-productos h2{
+  margin: auto
+}
+
+main .articulo-productos img{
+  width: 80%;
+  height: 200px;
+}
+
+
+
+
+
+
+
+/* 
+
+************************************************************************************************************
+************************************************************************************************************ */
+/* ----------------------------------------------- Administrar(/admin) -------------------------------------------------*/
+
+main h1{
+  text-align: center;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+h1 a{
+  width: 160px ;
+  background: #522d2d;;
+  border: solid black 1px;
+  margin: auto;
+  border-radius: 5%;
+}
+
+.contenedor-botones a i{
+  color:blue;
+}
+
+
+main .seccion-contenedora-administrar{
+  display: flex;
+  background: rgb(216, 139, 139);;
+  width: 100;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+main .administrar-producto{
+  width: 98%;
+  height: 100px;
+  margin: 20px;
+  margin-top: 10px;
+  background: rgb(250, 227, 227);  
+  margin-bottom: 40px;
+  border-radius: 3%;
+  display: flex;
+  border: brown solid;
+  justify-content:space-between;
+}
+
+main .contenedor-imagen{
+  width: 25%;
+  height: 90% ;
+  margin: 5px;
+}
+main .contenedor-imagen img{
+  width: 100%;
+  height: 100%;
+
+}
+
+main .contenedor-nombre {
+  width: 85%;
+  height: 100%;
+}
+main .contenedor-nombre .contenedor-botones{
+  display: flex;
+    justify-content: space-around;
+    background: #522d2d;
+  }   
+
+@media (min-width: 480px) {
+
+  main .contenedor-imagen{
+    width: 12%;
+    height: 90% ;
+    margin: 5px;
+  }
+
+  main .administrar-producto{
+    width: 70%;
+    height: 100px;
+    margin: 20px;
+    margin-top: 10px;
+    background: rgb(250, 227, 227);  
+    margin-bottom: 40px;
+    border-radius: 3%;
+    border: brown solid;
+    display: flex;
+  }
+
+  main .contenedor-nombre .contenedor-botones{
+  display: flex;
+    justify-content: space-around;
+    background: #522d2d;
+  }   
+}
+  /* ---------------------------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------------ */
+
+/* ************************************************************************************************************************************************************
+-------------------------------------------------------------------vista newProduct (/admin/newProduct)-----------------------------------------------------------------------
+**************************************************************************************************************************************** */
+
+
+
+.seccion-newproduct{
+  display: flex;
+  padding: 40px;;
+  justify-content: center;
+
+  
+}
+.contenedor-newproduct{
+
+  margin-bottom: 10px;
+ width: 350px;
+ height: 500px;
+ border: grey solid 1px;
+ display: flex;
+ flex-direction: column;
+ background: rgb(250, 227, 227);  
+ 
+ 
+
+}
+
+
+.contenedor-newproduct form{
+  display: flex;
+  flex-direction: column;
+ 
+ 
+}
+
+.contenedor-newproduct h4{
+  margin-top: 0;
+  
+  text-align: center;
+  color: brown;
+}
+
+
+.contenedor-newproduct form .titulo{
+  width: 90%;
+  height: 38px;
+  margin: auto ;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column ;
+  
+
+}
+
+.enviar{
+  margin: auto;
+  width: 50%;
+  background: brown;  ;
+  color: aliceblue;
+
+}
+
+
+@media (min-width: 480px) {
+
+
+
+}
+
+
+
+

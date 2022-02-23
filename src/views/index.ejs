@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+
+    <%- include('./partials/header') %>
+      <main>
+
+        <section class="banner">
+          <img src="/img/otras/banner.jpg" alt="banner">
+        </section>
+
+          <section class="seccion-contenedora">
+            <% if (data) { %>
+              <% data.forEach(function(product){ %>
+                <article class="articulo-productos">
+                  <h2><%= product.name%></h2>
+                
+                  <div>
+                    <a href="/<%= product.id%>"><img src="<%= product.image%>" alt=""></a>
+                  </div>
+                  <div>
+                    <p>-<%= product.discount%>%|| $<%= product.price%></p>
+                  </div>
+
+
+
+             
+
+                </article>
+
+                                            <% }); %>
+              <% } %>
+          </section>
+      </main>
+
+
+
+         <%- include('./partials/footer') %>
+     
+
+  </body>
+  
+</html>
+
+
+
