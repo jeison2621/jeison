@@ -6,37 +6,27 @@
 
     <%- include('./partials/header') %>
       <main>
-
-        <h1>Adminstrar productos<a href="/admin/newProduct"> +</a></h1>
-        
-
-          <section class="seccion-contenedora-administrar">
-            
-            <% if (data) { %>
-              <% data.forEach(function(product){ %>
-                <article class="administrar-producto">
-
-                  <div class="contenedor-nombre">
-                    <h2><%= product.name%></h2>
-                    <div class="contenedor-botones">
-                      <a href="#"></i>Ver</a>
-                      <a href="#">Editar</a>
-                      <a href="#">Eliminar</a>
-                    </div>
-                  </div>
-
-                  <div class="contenedor-imagen">
-                     <img src="<%= product.image%>" alt="">
-                  <div>
-                    
-                    <p></p>
-                  </div>
-                </article>
+          <section class="seccion-contenedora-admin">
+            <article class="administrar-usuarios">
+                <h2>Administrar usuarios</h2>
+                <a href="admin/users">
+                    <img src="./img/otras/imagen_usuarios.png" alt="">
+                </a>
                 
 
-                                            <% }); %>
-              <% } %>
-          </section>
+            </article>
+    
+            <article class="administrar-productos">
+                <h2>Administrar productos</h2>
+                <a href="/admin/products">
+                <img src="./img/products/3_Angel silver.jpeg" alt="">
+
+
+                </a>
+                
+            </article>
+
+          </section>         
       </main>
 
 

@@ -10,17 +10,39 @@ const navigationController ={
 
     },
     getAdmin : (req,res,next)=>{
+        
+            res.render('administrar',{title: "Fran Generator"})// muestra los datos de los productos en la vista Principal(/admin)
+                                
+        
+        
+
+    },
+
+    adminProducts : (req,res,next)=>{
         model.product.findAll().then(item=>{
-            res.render('administrar',{title: "Fran Generator",// muestra los datos de los productos en la vista Principal(/admin)
+            res.render('Productos',{title: "Fran Generator",// muestra los datos de los productos en la vista Principal(/admin)
                                 data:item})
         }).catch(err => next(err))
         
 
     },
-    createProducto : (req,res)=>{
+    createProduct : (req,res)=>{
         res.render('newProduct',{title:"Fran Generato"})
 
+    },
+    editProducts : (req,res,next)=>{
+        res.render('editProduct')
+
+
     }
+        // model.product.findAll().then(item=>{
+        //     res.render('Productos',{title: "Fran Generator",// muestra los datos de los productos en la vista Principal(/admin)
+        //                         data:item})
+        // }).catch(err => next(err))
+        
+
+    
+    
 }
 module.exports =navigationController
 
