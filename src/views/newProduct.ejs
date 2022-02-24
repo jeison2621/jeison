@@ -9,28 +9,28 @@
           <section class="seccion-newproduct">
              <article class="contenedor-newproduct">
               <h4>NUEVO PRODUCTO</h4>
-               <form action="">
+               <form action="/admin/products/newProduct" method="post">
 
                  <div class="titulo">
                    <label for="">Nombre</label>
-                   <input type="text">
+                   <input type="text" name="name" id="">
 
                 </div>
                 <div class="titulo">
                   <label for="">Descripción</label>
-                  <input type="text">
+                  <input type="text" name="description" id="">
 
 
                 </div>
                 <div class="titulo">
                   <label for="">Imagen</label>
-                  <input type="file">
+                  <input type="file" name="image" id="">
 
 
                 </div>
                 <div class="titulo">
                   <label for="">Categoría</label>
-                  <select name="category_new_product" id="category_new_product">
+                  <select name="category" id="category_new_product">
                     <option value="">Elegir una</option>
                     <option value="lotion">Loción</option>
                     <option value="oil">Aceite</option>
@@ -43,12 +43,12 @@
                 </div>
                 <div class="titulo">
                   <label for="">Cantidad</label>
-                  <input type="number" name="amount_new_product" id="amount_new_product" value="100" required>
+                  <input type="number" name="amount" id="amount_new_product" value="100" required>
 
                 </div>
                 <div class="titulo">
                   <label for="">Tipo de Cantidad</label>
-                  <select name="type_amount_new_product" id="type_amount_new_product">
+                  <select name="typeAmount" id="type_amount_new_product">
                     <option value="">Elija un tipo de cantidad</option>
                     <option value="ml">Milílitros (ml.)</option>
                     <option value="floz">Onzas fluidas (fl. oz.)</option>
@@ -58,14 +58,14 @@
                 </div>
                 <div class="titulo">
                   <label for="">Precio</label>
-                  <input type="number" name="price_new_product" id="price_new_product" value="100000"
+                  <input type="number" name="price" id="" value="100000"
                   required>
 
 
                 </div>
                 <div class="titulo">
                   <label for="">Descuento</label>
-                  <select name="type_amount_new_product" id="type_amount_new_product">
+                  <select name="discount" id="type_amount_new_product">
                     <option value="">Sin Descuento</option>
                     <option value="10">10%</option>
                     <option value="15">15%</option>

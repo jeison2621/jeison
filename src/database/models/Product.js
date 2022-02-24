@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
     }
     let cols =
     {
-        id: {
+        id: {       
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -59,3 +59,6 @@ module.exports = (sequelize, dataTypes) => {
 
     return Product;
 }
+
+
+
