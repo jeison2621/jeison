@@ -29,8 +29,29 @@ const navigationController ={
 
     },
 
+    getEditProducts : (req,res,next)=>{
+        model.product.findOne(req.params.id)
+        .then(function(item){
+            // res.send(item)
+            res.render('editProduct',{data:item})
+        })
+        
+
+    },
+
+
+    detailProducts:(req,res)=>{
+        model.product.findOne(req.params.id)
+        .then(function(item){
+            res.render('detailProduct',{data:item})
+        })
+        
+    },
+
+
     editProducts : (req,res,next)=>{
-        res.render('editProduct')
+        model.product.findOne(req.params.id)
+
 
     },
 
@@ -52,13 +73,7 @@ const navigationController ={
         })
         
     },
-    detailProducts:(req,res)=>{
-        model.product.findOne(req.params.id)
-        .then(function(item){
-            res.render('detailProduct'),{data:item}
-        })
-        
-    },
+
     borrarProduct: (req,res)=>{
         model.product.delete(req.params.id)
         .then(function(item){

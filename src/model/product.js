@@ -13,8 +13,8 @@ const productsModel = {
      findOne:(id)=>{
        return  db.products
                  .findByPk(id)
-                 //.then((item)=>item)
-                 .then((item)=>console.log(item))
+                 .then((item)=>item)
+                    //.then((item)=>console.log(item))
                  .catch(err => console.error(err))
          
          
@@ -49,6 +49,8 @@ const productsModel = {
      },
  }
 
- productsModel.findAll() 
+ //productsModel.findAll() 
 
 module.exports =  productsModel 
+
+

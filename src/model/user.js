@@ -51,7 +51,7 @@ const usersModel = {
 // probando los metodos de userModelOld
 
 //1-usersModelOld.findAll() 
-usersModel.findAll() 
+//usersModel.findAll() 
 
 //2-usersModelOld.findOne(2) asi consultamos un usuario por id de nuestra db
 //usersModel.findOne(6)

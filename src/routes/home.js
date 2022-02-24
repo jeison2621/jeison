@@ -10,11 +10,15 @@ router.get('/admin',navigationController.getAdmin)
 // Adminstrar productos
 router.get('/admin/products',navigationController.adminProducts)
 
+// crear productos
 router.get('/admin/products/newProduct', navigationController.createProduct)
 router.post('/admin/products/newProduct', upload.single('image'),navigationController.guardarProduct)
 
-router.get('/admin/products/editProduct',navigationController.editProducts)
+// Editar productos
+router.get('/admin/products/editProduct/:id',navigationController.getEditProducts)
+router.post('/admin/products/editProduct/:id',navigationController.editProducts)
 
+// Eliminar productos
 router.get('/admin/products/borrar/:id',navigationController.borrarProduct)
 
 

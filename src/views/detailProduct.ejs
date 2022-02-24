@@ -6,6 +6,17 @@
 
     <%- include('./partials/header') %>
       <main>
+
+
+          <% if (data) { %>
+            
+          <h2><%= data.name %></h2>
+          <img src="/img/products/<%= data.image%>" alt="">
+          
+          <h4><%= data.description%></h4>
+
+          <% } %>
+
         
       </main>
 

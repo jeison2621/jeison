@@ -8,7 +8,14 @@
       <main>
           <section class="seccion-newproduct">
              <article class="contenedor-newproduct">
-              <h4>EDITAR PRODUCTO</h4>
+
+
+              <% if (data) { %>
+                <h2><%= data.name %></h2>
+              <% } %>
+
+
+              <h4>EDITAR PRODUCTO </h4>
                <form action="">
 
                  <div class="titulo">
