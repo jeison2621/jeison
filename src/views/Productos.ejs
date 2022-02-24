@@ -21,12 +21,12 @@
                     <div class="contenedor-botones">
                       <a href="/admin/products/<%=product.id%>""></i>Ver</a>
                       <a href="/admin/products/editProduct/<%=product.id%>">Editar</a>
-                      <a href="#">Eliminar</a>
+                      <a href="/admin/products/borrar/<%=product.id%>">Eliminar</a>
                     </div>
                   </div>
 
                   <div class="contenedor-imagen">
-                     <img src="<%= product.image%>" alt="">
+                     <img src="/img/products/<%= product.image%>" alt="">
                   <div>
                     
                     <p></p>

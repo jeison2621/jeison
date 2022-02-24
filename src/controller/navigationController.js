@@ -36,25 +36,33 @@ const navigationController ={
 
     guardarProduct: (req,res)=>{
         model.product.create(
-
              {
                  name:           req.body.name,
                  description:    req.body.description,
-                 image:          req.body.image,
+                 image:          req.file ? req.file.filename: '',
                  category:       req.body.category,
                  amount:         req.body.amount,
                  typeAmount:     req.body.typeAmount,
                  price:          req.body.price,
                  discount:       req.body.discount
-            }
-            
-        );
-        res.redirect('/admin/products')
+            }   
+        )
+        .then(function(item){
+            res.redirect('/admin/products')
+        })
+        
     },
     detailProducts:(req,res)=>{
         model.product.findOne(req.params.id)
         .then(function(item){
             res.render('detailProduct'),{data:item}
+        })
+        
+    },
+    borrarProduct: (req,res)=>{
+        model.product.delete(req.params.id)
+        .then(function(item){
+            res.redirect('/admin/products')
         })
         
     }
