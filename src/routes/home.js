@@ -7,6 +7,9 @@ const upload = require('../middleware/multermiddproduct');
 router.get('/',navigationController.getHome)
 router.get('/admin',navigationController.getAdmin)
 
+
+router.get('/:id',navigationController.detailProducts)
+
 // Adminstrar productos
 router.get('/admin/products',navigationController.adminProducts)
 

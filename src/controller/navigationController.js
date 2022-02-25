@@ -51,6 +51,11 @@ const navigationController ={
 
     editProducts : (req,res,next)=>{
         model.product.findOne(req.params.id)
+        res.send('funciona')
+
+        // .then(function(item){
+        //     res.redirect('admin/products/')
+        // })
 
 
     },

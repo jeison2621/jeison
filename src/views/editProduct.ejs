@@ -11,28 +11,24 @@
 
 
               <% if (data) { %>
-                <h2><%= data.name %></h2>
-              <% } %>
-
-
+                
               <h4>EDITAR PRODUCTO </h4>
-               <form action="">
+              <form action="/admin/products/editProduct" method="post" enctype="multipart/form-data">
 
                  <div class="titulo">
                    <label for="">Nombre</label>
-                   <input type="text">
+                   <input type="text" value="<%= data.name %>">
 
                 </div>
                 <div class="titulo">
                   <label for="">Descripción</label>
-                  <input type="text">
+                  <input type="text" value="<%= data.description %>">
 
 
                 </div>
                 <div class="titulo">
                   <label for="">Imagen</label>
-                  <input type="file">
-
+                  <input type="file" value="/img/products">
 
                 </div>
                 <div class="titulo">
@@ -100,6 +96,8 @@
                   </button>
 
                </form>
+
+               <% } %>
 
              </article>
             
