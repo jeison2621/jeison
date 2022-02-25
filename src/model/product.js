@@ -19,16 +19,16 @@ const productsModel = {
          
          
      }, 
-     create:(usuario)=>{
-       return  db.products.create(usuario)
+     create:(producto)=>{
+       return  db.products.create(producto)
              .then((item)=>item)
              .catch(err => console.error(err))
  
  
          
      },
-     update:(usuario, id)=>{
-       return  db.products.update(usuario,{
+     update:(producto, id)=>{
+       return  db.products.update(producto,{
              where:{
                  id: id
              }})

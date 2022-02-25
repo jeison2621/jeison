@@ -5,105 +5,112 @@
   <body>
 
     <%- include('./partials/header') %>
-      <main>
-          <section class="seccion-newproduct">
-             <article class="contenedor-newproduct">
-
-
-              <% if (data) { %>
-                
-              <h4>EDITAR PRODUCTO </h4>
-              <form action="/admin/products/editProduct" method="post" enctype="multipart/form-data">
-
-                 <div class="titulo">
-                   <label for="">Nombre</label>
-                   <input type="text" value="<%= data.name %>">
-
-                </div>
-                <div class="titulo">
-                  <label for="">Descripción</label>
-                  <input type="text" value="<%= data.description %>">
-
-
-                </div>
-                <div class="titulo">
-                  <label for="">Imagen</label>
-                  <input type="file" value="/img/products">
-
-                </div>
-                <div class="titulo">
-                  <label for="">Categoría</label>
-                  <select name="category_new_product" id="category_new_product">
-                    <option value="">Elegir una</option>
-                    <option value="lotion">Loción</option>
-                    <option value="oil">Aceite</option>
-                    <option value="liquid">Líquido</option>
-                    <option value="gel">Gel</option>
-                    <option value="cream">Crema</option>
-                </select>
-
-
-                </div>
-                <div class="titulo">
-                  <label for="">Cantidad</label>
-                  <input type="number" name="amount_new_product" id="amount_new_product" value="100" required>
-
-                </div>
-                <div class="titulo">
-                  <label for="">Tipo de Cantidad</label>
-                  <select name="type_amount_new_product" id="type_amount_new_product">
-                    <option value="">Elija un tipo de cantidad</option>
-                    <option value="ml">Milílitros (ml.)</option>
-                    <option value="floz">Onzas fluidas (fl. oz.)</option>
-                </select>
-
-
-                </div>
-                <div class="titulo">
-                  <label for="">Precio</label>
-                  <input type="number" name="price_new_product" id="price_new_product" value="100000"
-                  required>
-
-
-                </div>
-                <div class="titulo">
-                  <label for="">Descuento</label>
-                  <select name="type_amount_new_product" id="type_amount_new_product">
-                    <option value="">Sin Descuento</option>
-                    <option value="10">10%</option>
-                    <option value="15">15%</option>
-                    <option value="20">20%</option>
-                    <option value="25">25%</option>
-                    <option value="30">30%</option>
-                    <option value="35">35%</option>
-                    <option value="40">40%</option>
-                    <option value="45">45%</option>
-                    <option value="50">50%</option>
-                    <option value="55">55%</option>
-                    <option value="60">60%</option>
-                    <option value="65">65%</option>
-                    <option value="70">70%</option>
-                    <option value="75">75%</option>
-                </select>
-
-
-
-                </div>
-                
-              
-                  <button type="submit" class="enviar">Actualizar  
-
-                  </button>
-
-               </form>
-
-               <% } %>
-
-             </article>
+          <main>
+            <% if (data) { %>
+  
+            <section class="seccion-newproduct">
+              <article class="contenedor-newproduct">
+               <h4>EDITAR PRODUCTO</h4>
+            <form action="/admin/products/editProduct/<%=data.id%>?_method=PUT" method="post" enctype="multipart/form-data">
             
 
+              
+
+
+              <div class="titulo">
+                <label for="">Nombre</label>
+                <input type="text"name='name' value="<%=data.name%>">
+
+             </div>
+             <div class="titulo">
+               <label for="">Descripción</label>
+               <input type="text" name="description" value="<%=data.description%>">
+
+
+             </div>
+             <div class="titulo">
+               <label for="">Imagen</label>
+               <input type="file" name="image" value="<%=data.image%>" id="">
+
+
+             </div>
+             <div class="titulo">
+               <label for="">Categoría</label>
+               <select name="category" id="category_new_product">
+                 <option value="">Elegir una</option>
+                 <option value="lotion">Loción</option>
+                 <option value="oil">Aceite</option>
+                 <option value="liquid">Líquido</option>
+                 <option value="gel">Gel</option>
+                 <option value="cream">Crema</option>
+             </select>
+
+
+             </div>
+             <div class="titulo">
+               <label for="">Cantidad</label>
+               <input type="number" name="amount" id="amount_new_product" value="<%=data.amount%>" required>
+
+             </div>
+             <div class="titulo">
+               <label for="">Tipo de Cantidad</label>
+               <select name="typeAmount" id="type_amount_new_product">
+                 <option value="<%=data.typeAmount%>"><%=data.typeAmount%></option>
+                 <option value="ml">Milílitros (ml.)</option>
+                 <option value="floz">Onzas fluidas (fl. oz.)</option>
+             </select>
+
+
+             </div>
+             <div class="titulo">
+               <label for="">Precio</label>
+               <input type="number" name="price" id="" value="<%=data.price%>"
+               required>
+
+
+             </div>
+             <div class="titulo">
+               <label for="">Descuento</label>
+               <select name="discount" id="type_amount_new_product">
+                 <option value="<%=data.discount%>"><%=data.discount%>%</option>
+                 <option value="10">10%</option>
+                 <option value="15">15%</option>
+                 <option value="20">20%</option>
+                 <option value="25">25%</option>
+                 <option value="30">30%</option>
+                 <option value="35">35%</option>
+                 <option value="40">40%</option>
+                 <option value="45">45%</option>
+                 <option value="50">50%</option>
+                 <option value="55">55%</option>
+                 <option value="60">60%</option>
+                 <option value="65">65%</option>
+                 <option value="70">70%</option>
+                 <option value="75">75%</option>
+             </select>
+
+
+
+             </div>
+             
+           
+               <button type="submit" class="enviar">Actualizar  
+
+               </button>
+
+
+             
+
+
+            </form>
+
+            </form>       
+            <% } %>
+
+
+          </main>
           </section>
-      </main>
+          </article>
 
          <%- include('./partials/footer') %>
   </body>
