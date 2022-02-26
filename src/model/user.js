@@ -1,52 +1,45 @@
 const db = require('../database/models')
 
-const usersModel = { 
+const usersModel = {
 
-    findAll:()=>{
-       return db.users  
-                  .findAll()
-                  .then((item)=>item)
-                  //.then((item)=>console.log(item))
-                  .catch(err => console.error(err))
-        
-    },
-    findOne:(id)=>{
-      return  db.users
-                .findByPk(id)
-                .then((item)=>item)
-                //.then((item)=>console.log(item))
-                .catch(err => console.error(err))
-        
-        
-    }, 
-    create:(usuario)=>{
-      return  db.users.create(usuario)
-            .then((item)=>item)
+    findAll: () => {
+        return db.users
+            .findAll()
+            .then((item) => item)
+            //.then((item)=>console.log(item))
             .catch(err => console.error(err))
 
-
-        
     },
-    update:(usuario, id)=>{
-      return  db.users.update(usuario,{
-            where:{
+    findOne: (id) => {
+        return db.users
+            .findByPk(id)
+            .then((item) => item)
+            //.then((item)=>console.log(item))
+            .catch(err => console.error(err))
+    },
+    create: (usuario) => {
+        return db.users.create(usuario)
+            .then((item) => item)
+            .catch(err => console.error(err))
+    },
+    update: (usuario, id) => {
+        return db.users.update(usuario, {
+            where: {
                 id: id
-            }})
-            .then((item)=>item)
+            }
+        })
+            .then((item) => item)
             .catch(err => console.error(err))
-        
     },
-    delete:(id)=>{
-        return  db.users.destroy({
-            where:{
+    delete: (id) => {
+        return db.users.destroy({
+            where: {
                 id: id
-            }})
-
-            .then((item)=>item)
+            }
+        })
+            .then((item) => item)
             .catch(err => console.error(err))
-        
-    
-    }, 
+    },
 }
 // probando los metodos de userModelOld
 
@@ -55,7 +48,7 @@ const usersModel = {
 
 //2-usersModelOld.findOne(2) asi consultamos un usuario por id de nuestra db
 //usersModel.findOne(6)
- //3- asi insertamos los datos en nuestra db  los campos deben ser identicos unciona ok 
+//3- asi insertamos los datos en nuestra db  los campos deben ser identicos unciona ok 
 // usersModel.create(
 //      {
 //       name: "camilo",
@@ -75,5 +68,5 @@ const usersModel = {
 // },3)
 
 
- // 4- usersModelOld.delete(3)   asi borramos un registro de la db
+// 4- usersModelOld.delete(3)   asi borramos un registro de la db
 module.exports = usersModel

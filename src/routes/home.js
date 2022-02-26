@@ -3,28 +3,24 @@ const router = express.Router();
 const { navigationController} = require('../controller');
 const upload = require('../middleware/multermiddproduct');
 
-
 router.get('/',navigationController.getHome)
 router.get('/admin',navigationController.getAdmin)
-
 
 router.get('/:id',navigationController.detailProducts)
 
 // Adminstrar productos
 router.get('/admin/products',navigationController.adminProducts)
 
-// crear productos
+// Crear productos
 router.get('/admin/products/newProduct', navigationController.createProduct)
 router.post('/admin/products/newProduct', upload.single('image'),navigationController.guardarProduct)
 
 // Editar productos
 router.get('/admin/products/editProduct/:id',navigationController.getEditProducts)
-router.post('/admin/products/editProduct/:id',navigationController.editProducts)
+router.post('/admin/products/editProduct/:id', upload.single('image'),navigationController.editProducts)
 
 // Eliminar productos
 router.get('/admin/products/borrar/:id',navigationController.borrarProduct)
-
-
 
 router.get('/admin/products/:id', navigationController.detailProducts)
 

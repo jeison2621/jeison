@@ -4,18 +4,15 @@ const model = require('../model')
 const navigationController ={
     getHome : (req, res , next) => {
         model.product.findAll().then(item=>{
-            res.render('index',{title: "Fran Generator",// muestra los datos de los productos en la vista Principal(/)
+            res.render('index',{title: "Parfum Légende",// muestra los datos de los productos en la vista Principal(/)
                                 data:item})
         }).catch(err => next(err))
-
     },
     getAdmin : (req,res,next)=>{
         
             res.render('administrar'    )// muestra los datos de los productos en la vista Principal(/admin)
                                 
-        
         ///////////////////////// Productos////////////////////
-
     },
 
     adminProducts : (req,res,next)=>{
@@ -26,7 +23,6 @@ const navigationController ={
 
     createProduct : (req,res)=>{
         res.render('newProduct')
-
     },
 
     getEditProducts : (req,res,next)=>{
@@ -48,16 +44,26 @@ const navigationController ={
         
     },
 
+    editProducts: (req,res)=>{
+        model.product.update(
+        {
+            name:           req.body.name,
+            description:    req.body.description,
+            image:          req.file ? req.file.filename: '',
+            category:       req.body.category,
+            amount:         req.body.amount,
+            typeAmount:     req.body.typeAmount,
+            price:          req.body.price,
+            discount:       req.body.discount
+       },  req.params.id)
 
-    editProducts : (req,res,next)=>{
-        model.product.findOne(req.params.id)
-        res.send('funciona')
-
-        // .then(function(item){
-        //     res.redirect('admin/products/')
-        // })
+        
+         .then(function(item){
+        res.redirect('/admin/products/')
+        
 
 
+         })
     },
 
     guardarProduct: (req,res)=>{

@@ -6,11 +6,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 
+<<<<<<< HEAD
 /* agregando configuracion para la sesión*/
 const acceso = require('./middleware/acceso');
 const session = require('express-session');
 
 
+=======
+>>>>>>> 99b50922ac86e30e8065c0cbbc3929c2d43a7833
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,7 +35,6 @@ app.use(session({
 }));
 
 app.use(acceso);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
