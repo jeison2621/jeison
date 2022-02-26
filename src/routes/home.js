@@ -17,7 +17,7 @@ router.post('/admin/products/newProduct', upload.single('image'),navigationContr
 
 // Editar productos
 router.get('/admin/products/editProduct/:id',navigationController.getEditProducts)
-router.post('/admin/products/editProduct/:id',navigationController.editProducts)
+router.post('/admin/products/editProduct/:id', upload.single('image'),navigationController.editProducts)
 
 // Eliminar productos
 router.get('/admin/products/borrar/:id',navigationController.borrarProduct)

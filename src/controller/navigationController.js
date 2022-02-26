@@ -44,16 +44,26 @@ const navigationController ={
         
     },
 
+    editProducts: (req,res)=>{
+        model.product.update(
+        {
+            name:           req.body.name,
+            description:    req.body.description,
+            image:          req.file ? req.file.filename: '',
+            category:       req.body.category,
+            amount:         req.body.amount,
+            typeAmount:     req.body.typeAmount,
+            price:          req.body.price,
+            discount:       req.body.discount
+       },  req.params.id)
 
-    editProducts : (req,res,next)=>{
-        model.product.findOne(req.params.id)
-        res.send('funciona')
-
-        // .then(function(item){
-        //     res.redirect('admin/products/')
-        // })
+        
+         .then(function(item){
+        res.redirect('/admin/products/')
+        
 
 
+         })
     },
 
     guardarProduct: (req,res)=>{
