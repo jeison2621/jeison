@@ -4,18 +4,15 @@ const model = require('../model')
 const navigationController ={
     getHome : (req, res , next) => {
         model.product.findAll().then(item=>{
-            res.render('index',{title: "Fran Generator",// muestra los datos de los productos en la vista Principal(/)
+            res.render('index',{title: "Parfum Légende",// muestra los datos de los productos en la vista Principal(/)
                                 data:item})
         }).catch(err => next(err))
-
     },
     getAdmin : (req,res,next)=>{
         
             res.render('administrar'    )// muestra los datos de los productos en la vista Principal(/admin)
                                 
-        
         ///////////////////////// Productos////////////////////
-
     },
 
     adminProducts : (req,res,next)=>{
@@ -26,7 +23,6 @@ const navigationController ={
 
     createProduct : (req,res)=>{
         res.render('newProduct')
-
     },
 
     getEditProducts : (req,res,next)=>{

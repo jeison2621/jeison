@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+      <main>
+        <h1>Administrar usuarios<a href="/admin/users/newUser"> +</a></h1>
+        
+          <section class="seccion-contenedora-administrar">
+            
+            <% if (data) { %>
+              <% data.forEach(function(user){ %>
+                <article class="administrar-usero">
+
+                  <div class="contenedor-nombre">
+                    <h2><%= user.name%></h2>
+                    <div class="contenedor-botones">
+                      <a href="/admin/users/<%=user.id%>"></i>Ver</a>
+                      <a href="/admin/users/editUser/<%=user.id%>">Editar</a>
+                      <a href="/admin/users/borrar/<%=user.id%>">Eliminar</a>
+                    </div>
+                  </div>
+
+                  <div class="contenedor-imagen">
+                     <img src="/img/users/<%= user.image%>" alt="">
+                  <div>
+                    
+                    <p></p>
+                  </div>
+                </article>                
+                                            <% }); %>
+              <% } %>
+          </section>
+      </main>
+
+         <%- include('../partials/footer') %>
+     
+  </body>  
+</html>
