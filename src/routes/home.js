@@ -8,7 +8,7 @@ router.get('/admin',navigationController.getAdmin)
 
 router.get('/:id',navigationController.detailProducts)
 
-// Adminstrar productos
+// Administrar productos
 router.get('/admin/products',navigationController.adminProducts)
 
 // Crear productos

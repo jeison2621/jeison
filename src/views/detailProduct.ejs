@@ -7,15 +7,13 @@
     <%- include('./partials/header') %>
       <main>
 
-
           <% if (data) { %>
           <section class="seccion-detalle">            
           <h2><%= data.name %> || $<%= data.price%></h2>
           <img src="/img/products/<%= data.image%>" alt="">
           <h4><%= data.description%>||<%= data.category%>|| <%= data.amount%>||<%= data.typeamount%></h4>
         </section>  
-          <% } %>
-        
+          <% } %>        
         
       </main>
 
@@ -23,6 +21,3 @@
   </body>
   
 </html>
-
-
-

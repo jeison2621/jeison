@@ -22,10 +22,7 @@ const productsModel = {
      create:(producto)=>{
        return  db.products.create(producto)
              .then((item)=>item)
-             .catch(err => console.error(err))
- 
- 
-         
+             .catch(err => console.error(err))         
      },
      update:(producto, id)=>{
        return  db.products.update(producto,{
@@ -33,8 +30,7 @@ const productsModel = {
                  id: id
              }})
              .then((item)=>item)
-             .catch(err => console.error(err))
-         
+             .catch(err => console.error(err))         
      },
      delete:(id)=>{
          return  db.products.destroy({

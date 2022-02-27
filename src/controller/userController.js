@@ -11,14 +11,19 @@ const userController = {
     },
     // Los que siguen están en TESTING
     createUser: (req, res) => {
+        //PRUEBA
+        console.log("-------------------");
+        console.log(req.body);
+        console.log("-------------------");
+        
         model.user.create(
             {
-                nombre: req.body.nombre,
-                apellidos: req.body.apellidos,
-                email: req.body.email,
-                password: req.body.password,
-                image: req.file ? req.file.filename : '',
-                rol: req.body.rol,
+                name: 'Diego',
+                lastname: 'Duque',
+                email: 'diegomduque@h.com',
+                password: '0000',
+                avatar: '',
+                roles_id: '1',
             }
         )
             .then(function (item) {
@@ -28,13 +33,13 @@ const userController = {
     getEditUsers: (req, res, next) => {
         model.user.findOne(req.params.id)
             .then(function (item) {
-                res.render('editUser', { data: item })
+                res.render('user/editUser', { data: item })
             })
     },
     detailUsers: (req, res) => {
         model.user.findOne(req.params.id)
             .then(function (item) {
-                res.render('detailUser', { data: item })
+                res.render('user/editUser', { data: item })
             })
 
     },
