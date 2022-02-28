@@ -7,23 +7,10 @@
       <main>
         <% if (data) { %>
 
-
-<p>
-  
-  
-
-  
- 
-  <%=data.roles_id%>
-  
-
-
-</p>
-
         <section class="seccion-newproduct">
           <article class="contenedor-newproduct">
             <h4>EDITAR USUARIO</h4>
-            <form action="/admin/users/editUser/<%=data.id%>" method="post">
+            <form action="/admin/users/editUser/<%=data.id%>" method="post" enctype="multipart/form-data">
 
               <div class="titulo">
                 <label for="">Nombre(s)</label>
@@ -48,20 +35,18 @@
 
               <div class="titulo">
                 <label for="">Avatar</label>
-                <input type="file" name="image">
+                <input type="file" name="image" accept="image/png, image/gif, image/jpeg">
               </div>
 
               <div class="titulo">
                 <label for="rol">Rol</label>
                 <select name="rol" id="rol">
-                  <option id="rol" value="Administrador" <%= data.roles_id == "1" ? "selected" : "" %>>Administrador</option>
-                  <option id="rol" value="Cliente" <%= data.roles_id == "2" ? "selected" : "" %>>Cliente</option>
+                  <option id="rol" value="1" <%= data.roles_id == "1" ? "selected" : "" %>>Administrador</option>
+                  <option id="rol" value="2" <%= data.roles_id == "2" ? "selected" : "" %>>Cliente</option>
                 </select>
               </div>
 
-              <button type="submit" class="enviar">Editar
-              </button>
-
+              <input  class="enviar" type="submit" value="Editar">
             </form>
 
           </article>

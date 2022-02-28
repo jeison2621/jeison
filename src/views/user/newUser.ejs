@@ -8,10 +8,10 @@
         <section class="seccion-newproduct">
           <article class="contenedor-newproduct">
             <h4>NUEVO USUARIO</h4>
-            <form action="/admin/users/newUser" method="post">
+            <form action="/admin/users/newUser" method="post" enctype="multipart/form-data">
               
               <div class="titulo">
-                <label for="name"> Nombre(s):</label>
+                <label for="name"> Nombre(s)</label>
                   <input type="text" name="nombre" id="name">                
               </div>
 
@@ -21,18 +21,18 @@
               </div>
 
               <div class="titulo">
-                <label for="">Email</label>
-                <input type="email" name="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
               </div>
               
               <div class="titulo">
-                <label for="">Contraseña</label>
-                <input type="password" name="password">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password">
               </div>
 
               <div class="titulo">
-                <label for="">Avatar</label>
-                <input type="file" name="image">
+                <label for="image">Avatar</label>
+                <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg">
               </div>
 
               <div class="titulo">
