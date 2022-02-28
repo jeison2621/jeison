@@ -8,16 +8,16 @@
         <section class="seccion-newproduct">
           <article class="contenedor-newproduct">
             <h4>NUEVO USUARIO</h4>
-            <form action="/admin/users/newUser" method="post" enctype="multipart/form-data">
-
+            <form action="/admin/users/newUser" method="post">
+              
               <div class="titulo">
-                <label for="">Nombre(s)</label>
-                <input type="text" name="nombre">
+                <label for="name"> Nombre(s):</label>
+                  <input type="text" name="nombre" id="name">                
               </div>
 
               <div class="titulo">
-                <label for="">Apellidos</label>
-                <input type="text" name="apellidos">
+                <label for="lastname">Apellidos</label>
+                <input type="text" name="apellidos" id="lastname">
               </div>
 
               <div class="titulo">
@@ -43,13 +43,9 @@
                 </select>
               </div>
 
-              <button type="submit" class="enviar">Crear
-              </button>
-
+              <input  class="enviar" type="submit" value="Crear">
             </form>
-
           </article>
-
         </section>
       </main>
       <%- include('../partials/footer') %>

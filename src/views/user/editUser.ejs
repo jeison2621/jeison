@@ -9,27 +9,35 @@
 
 
 <p>
-  <%=data%>
+  
+  
+
+  
+ 
+  <%=data.roles_id%>
+  
+
+
 </p>
 
         <section class="seccion-newproduct">
           <article class="contenedor-newproduct">
             <h4>EDITAR USUARIO</h4>
-            <form action="/admin/users/editUser/:id" method="post" enctype="multipart/form-data">
+            <form action="/admin/users/editUser/<%=data.id%>" method="post">
 
               <div class="titulo">
                 <label for="">Nombre(s)</label>
-                <input type="text" name="nombre">
+                <input type="text" name="nombre" value="<%=data.name%>">
               </div>
 
               <div class="titulo">
                 <label for="">Apellidos</label>
-                <input type="text" name="apellidos">
+                <input type="text" name="apellidos" value="<%=data.lastname%>">
               </div>
 
               <div class="titulo">
                 <label for="">Email</label>
-                <input type="email" name="email">
+                <input type="email" name="email" value="<%=data.email%>">
               </div>
 
               
@@ -46,8 +54,8 @@
               <div class="titulo">
                 <label for="rol">Rol</label>
                 <select name="rol" id="rol">
-                  <option id="rol" value="Administrador">Administrador</option>
-                  <option id="rol" value="Cliente">Cliente</option>
+                  <option id="rol" value="Administrador" <%= data.roles_id == "1" ? "selected" : "" %>>Administrador</option>
+                  <option id="rol" value="Cliente" <%= data.roles_id == "2" ? "selected" : "" %>>Cliente</option>
                 </select>
               </div>
 
