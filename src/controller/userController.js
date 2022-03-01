@@ -7,9 +7,11 @@ const userController = {
         }).catch(err => next(err))
     },
     newUser: (req, res, next) => {
-        res.render('user/newUser')
+        //res.render('user/newUser')
+        res.send('hola new')
     },
     createUser: (req, res) => {
+        console.log(req.body)
         model.user.create(
             {
                 name: req.body.nombre,

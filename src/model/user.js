@@ -6,7 +6,6 @@ const usersModel = {
         return db.users
             .findAll()
             .then((item) => item)
-            //.then((item)=>console.log(item))
             .catch(err => console.error(err))
 
     },
