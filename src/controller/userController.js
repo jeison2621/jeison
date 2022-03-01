@@ -8,6 +8,7 @@ const userController = {
     },
     newUser: (req, res, next) => {
         res.render('user/newUser')
+                    
     },
     createUser: (req, res) => {
         model.user.create(

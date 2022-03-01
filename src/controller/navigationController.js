@@ -17,19 +17,19 @@ const navigationController ={
 
     adminProducts : (req,res,next)=>{
         model.product.findAll().then(item=>{
-            res.render('Productos',{data:item})
+            res.render('products/Productos',{data:item})
         }).catch(err => next(err))
     },
 
     createProduct : (req,res)=>{
-        res.render('newProduct')
+        res.render('products/newProduct')
     },
 
     getEditProducts : (req,res,next)=>{
         model.product.findOne(req.params.id)
         .then(function(item){
             // res.send(item)
-            res.render('editProduct',{data:item})
+            res.render('products/editProduct',{data:item})
         })
         
 
@@ -39,7 +39,7 @@ const navigationController ={
     detailProducts:(req,res)=>{
         model.product.findOne(req.params.id)
         .then(function(item){
-            res.render('detailProduct',{data:item})
+            res.render('products/detailProduct',{data:item})
         })
         
     },
