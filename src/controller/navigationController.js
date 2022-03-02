@@ -1,4 +1,4 @@
-const model = require('../model')
+const model = require('../model') 
 
 
 const navigationController ={
@@ -10,7 +10,7 @@ const navigationController ={
     },
     getAdmin : (req,res,next)=>{
         
-            res.render('administrar'    )// muestra los datos de los productos en la vista Principal(/admin)
+            res.render('administrar')// muestra los datos de los productos en la vista Principal(/admin)
                                 
         ///////////////////////// Productos////////////////////
     },
