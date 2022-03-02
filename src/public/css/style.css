@@ -496,9 +496,7 @@ main .contenedor-nombre .contenedor-botones{
 .seccion-newproduct{
   display: flex;
   padding: 40px;;
-  justify-content: center;
-
-  
+  justify-content: center;  
 }
 .contenedor-newproduct{
 
@@ -508,18 +506,14 @@ main .contenedor-nombre .contenedor-botones{
  border: grey solid 1px;
  display: flex;
  flex-direction: column;
- background: rgb(250, 227, 227);  
- 
- 
+ background: rgb(250, 227, 227);   
 
 }
 
 
 .contenedor-newproduct form{
   display: flex;
-  flex-direction: column;
- 
- 
+  flex-direction: column; 
 }
 
 .contenedor-newproduct h4{
@@ -546,9 +540,17 @@ main .contenedor-nombre .contenedor-botones{
   width: 50%;
   background: brown;  ;
   color: aliceblue;
-
 }
 
+
+.errors {
+  color: red;
+  list-style:none;
+  width: 90%;
+  height: 38px;
+  margin: auto ;
+  margin-bottom: 15px;
+}
 
 @media (min-width: 480px) {
 
@@ -591,4 +593,18 @@ main .seccion-detalle{
     flex-direction: column  
   }
 
+}
+
+/* ************************************************************************************************************************************
+********************************************************************************************************************************************
+---------------------------- login ---------------------------------------------------------------------------------
+***************************************************************************************************************************************** */
+
+.referencia {
+  color: brown;
+}
+
+
+#ocultar {
+  visibility: hidden;
 }

@@ -11,6 +11,7 @@ const userController = {
                     
     },
     createUser: (req, res) => {
+        console.log(req.body)
         model.user.create(
             {
                 name: req.body.nombre,

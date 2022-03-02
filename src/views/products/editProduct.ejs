@@ -3,119 +3,99 @@
 <%- include('../partials/head') %>
 
   <body>
-
     <%- include('../partials/header') %>
-          <main>
-            <% if (data) { %>
-  
-            <section class="seccion-newproduct">
-              <article class="contenedor-newproduct">
-               <h4>EDITAR PRODUCTO</h4>
-            <form action="/admin/products/editProduct/<%=data.id%>?_method=PUT" method="post" enctype="multipart/form-data">
-            
+      <main>
+        <% if (data) { %>
+          <section class="seccion-newproduct">
+            <article class="contenedor-newproduct">
+              <h4>EDITAR PRODUCTO</h4>
 
-              
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
 
+              <form action="/admin/products/editProduct/<%=data.id%>?_method=PUT" method="post"
+                enctype="multipart/form-data">
 
-              <div class="titulo">
-                <label for="">Nombre</label>
-                <input type="text"name='name' value="<%=data.name%>">
+                <div class="titulo">
+                  <label for="name">Nombre</label>
+                  <input type="text" name='name' id="name" value="<%=data.name%>">
+                </div>
 
-             </div>
-             <div class="titulo">
-               <label for="">Descripción</label>
-               <input type="text" name="description" value="<%=data.description%>">
+                <div class="titulo">
+                  <label for="description">Descripción</label>
+                  <input type="text" name="description" id="description" value="<%=data.description%>">
+                </div>
 
+                <div class="titulo">
+                  <label for="image">Imagen</label>
+                  <input type="file" name="image" id="image"
+                    accept="image/png, image/gif, image/jpeg">
+                </div>
 
-             </div>
-             <div class="titulo">
-               <label for="">Imagen</label>
-               <input type="file" name="image" value="<%=data.image%>" id="" accept="image/png, image/gif, image/jpeg">
+                <div class="titulo">
+                  <label for="category">Categoría</label>
+                  <select name="category" id="category">
+                    <option value="">Elija una categoría</option>
+                    <option value="lotion" <%= data.category == "lotion" ? "selected" : "" %>>Loción</option>
+                    <option value="oil" <%= data.category == "oil" ? "selected" : "" %>>Aceite</option>
+                    <option value="liquid" <%= data.category == "liquid" ? "selected" : "" %>>Líquido</option>
+                    <option value="gel" <%= data.category == "gel" ? "selected" : "" %>>Gel</option>
+                    <option value="cream" <%= data.category == "cream" ? "selected" : "" %>>Crema</option>
+                  </select>
+                </div>
 
+                <div class="titulo">
+                  <label for="amount">Cantidad</label>
+                  <input type="number" name="amount" id="amount" value="<%=data.amount%>">
+                </div>
 
-             </div>
-             <div class="titulo">
-               <label for="">Categoría</label>
-               <select name="category" id="category_new_product">
-                 <option value="">Elegir una</option>
-                 <option value="lotion">Loción</option>
-                 <option value="oil">Aceite</option>
-                 <option value="liquid">Líquido</option>
-                 <option value="gel">Gel</option>
-                 <option value="cream">Crema</option>
-             </select>
+                <div class="titulo">
+                  <label for="typeAmount">Tipo de Cantidad</label>
+                  <select name="typeAmount" id="typeAmount">
+                    <option value="">Elija un tipo de cantidad</option>
+                    <option value="ml" <%= data.typeAmount == "ml" ? "selected" : "" %>>Milílitros (ml.)</option>
+                    <option value="floz" <%= data.typeAmount == "floz" ? "selected" : "" %>>Onzas fluidas (fl. oz.)</option>
+                  </select>
 
+                </div>
+                <div class="titulo">
+                  <label for="price">Precio</label>
+                  <input type="number" name="price" id="price" value="<%=data.price%>">
 
-             </div>
-             <div class="titulo">
-               <label for="">Cantidad</label>
-               <input type="number" name="amount" id="amount_new_product" value="<%=data.amount%>" required>
+                </div>
+                <div class="titulo">
+                  <label for="discount">Descuento</label>
+                  <select name="discount" id="discount">
+                    <option value="">Elija un descuento</option>
+                    <option value="0" <%= data.discount == "0" ? "selected" : "" %>>Sin Descuento</option>
+                    <option value="10" <%= data.discount == "10" ? "selected" : "" %>>10%</option>
+                    <option value="15" <%= data.discount == "15" ? "selected" : "" %>>15%</option>
+                    <option value="20" <%= data.discount == "20" ? "selected" : "" %>>20%</option>
+                    <option value="25" <%= data.discount == "25" ? "selected" : "" %>>25%</option>
+                    <option value="30" <%= data.discount == "30" ? "selected" : "" %>>30%</option>
+                    <option value="35" <%= data.discount == "35" ? "selected" : "" %>>35%</option>
+                    <option value="40" <%= data.discount == "40" ? "selected" : "" %>>40%</option>
+                    <option value="45" <%= data.discount == "45" ? "selected" : "" %>>45%</option>
+                    <option value="50" <%= data.discount == "50" ? "selected" : "" %>>50%</option>
+                    <option value="55" <%= data.discount == "55" ? "selected" : "" %>>55%</option>
+                    <option value="60" <%= data.discount == "60" ? "selected" : "" %>>60%</option>
+                    <option value="65" <%= data.discount == "65" ? "selected" : "" %>>65%</option>
+                    <option value="70" <%= data.discount == "70" ? "selected" : "" %>>70%</option>
+                    <option value="75" <%= data.discount == "75" ? "selected" : "" %>>75%</option>
+                  </select>
+                </div>
 
-             </div>
-             <div class="titulo">
-               <label for="">Tipo de Cantidad</label>
-               <select name="typeAmount" id="type_amount_new_product">
-                 <option value="<%=data.typeAmount%>"><%=data.typeAmount%></option>
-                 <option value="ml">Milílitros (ml.)</option>
-                 <option value="floz">Onzas fluidas (fl. oz.)</option>
-             </select>
+                <button type="submit" class="enviar">Actualizar</button>
 
-
-             </div>
-             <div class="titulo">
-               <label for="">Precio</label>
-               <input type="number" name="price" id="" value="<%=data.price%>"
-               required>
-
-
-             </div>
-             <div class="titulo">
-               <label for="">Descuento</label>
-               <select name="discount" id="type_amount_new_product">
-                 <option value="<%=data.discount%>"><%=data.discount%>%</option>
-                 <option value="10">10%</option>
-                 <option value="15">15%</option>
-                 <option value="20">20%</option>
-                 <option value="25">25%</option>
-                 <option value="30">30%</option>
-                 <option value="35">35%</option>
-                 <option value="40">40%</option>
-                 <option value="45">45%</option>
-                 <option value="50">50%</option>
-                 <option value="55">55%</option>
-                 <option value="60">60%</option>
-                 <option value="65">65%</option>
-                 <option value="70">70%</option>
-                 <option value="75">75%</option>
-             </select>
-
-
-
-             </div>
-             
-           
-               <button type="submit" class="enviar">Actualizar  
-
-               </button>
-
-
-             
-
-
-            </form>
-
-            </form>       
-            <% } %>
-
-
-          </main>
+              </form>
+              <% } %>
+            </article>
           </section>
-          </article>
-
-         <%- include('../partials/footer') %>
+      </main>
+      <%- include('../partials/footer') %>
+        <script src="/js/valitationsProducts.js"> </script>
   </body>
-  
+
 </html>
-
-
-
