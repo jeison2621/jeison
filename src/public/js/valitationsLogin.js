@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
         if (category.value == "") {
             errores.push("Debe completar el campo contraseña")
         }
-
+ 
         if (errores.length > 0) {
             e.preventDefault();
 

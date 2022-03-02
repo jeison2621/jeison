@@ -7,8 +7,8 @@ const userController = {
         }).catch(err => next(err))
     },
     newUser: (req, res, next) => {
-        //res.render('user/newUser')
-        res.send('hola new')
+        res.render('user/newUser')
+                    
     },
     createUser: (req, res) => {
         console.log(req.body)
