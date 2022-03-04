@@ -10,11 +10,6 @@
             <article class="contenedor-newproduct">
               <h4>EDITAR PRODUCTO</h4>
 
-              <div class="errors">
-                <ul>
-                </ul>
-              </div>
-
               <form action="/admin/products/editProduct/<%=data.id%>?_method=PUT" method="post"
                 enctype="multipart/form-data">
 
@@ -91,6 +86,14 @@
 
               </form>
               <% } %>
+            </article>
+          </section>
+          <section class="errores">
+            <article>
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
             </article>
           </section>
       </main>

@@ -1,5 +1,5 @@
 const model = require('../model')
-
+const { validationResult } = require('express-validator')
 
 const navigationController = {
     getHome: (req, res, next) => {
@@ -36,62 +36,62 @@ const navigationController = {
 
     getEditProducts: (req, res, next) => {
         model.product.findOne(req.params.id)
-        .then(function(item){
-            // res.send(item)
-            res.render('products/editProduct',{data:item})
-        })
-
-
+            .then(function (item) {
+                res.render('products/editProduct', { data: item })
+            })
     },
 
 
     detailProducts: (req, res) => {
         model.product.findOne(req.params.id)
-        .then(function(item){
-            res.render('products/detailProduct',{data:item})
-        })
-
+            .then(function (item) {
+                res.render('products/detailProduct', { data: item })
+            })
     },
 
     editProducts: (req, res) => {
-        model.product.update(
-            {
-                name: req.body.name,
-                description: req.body.description,
-                image: req.file ? req.file.filename : '',
-                category: req.body.category,
-                amount: req.body.amount,
-                typeAmount: req.body.typeAmount,
-                price: req.body.price,
-                discount: req.body.discount
-            }, req.params.id)
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            model.product.update(
+                {
+                    name: req.body.name,
+                    description: req.body.description,
+                    image: req.file ? req.file.filename : '',
+                    category: req.body.category,
+                    amount: req.body.amount,
+                    typeAmount: req.body.typeAmount,
+                    price: req.body.price,
+                    discount: req.body.discount
+                }, req.params.id)
 
-
-            .then(function (item) {
-                res.redirect('/admin/products/')
-
-
-
-            })
+                .then(function (item) {
+                    res.redirect('/admin/products/')
+                })
+        }
     },
 
     guardarProduct: (req, res) => {
-        model.product.create(
-            {
-                name: req.body.name,
-                description: req.body.description,
-                image: req.file ? req.file.filename : '',
-                category: req.body.category,
-                amount: req.body.amount,
-                typeAmount: req.body.typeAmount,
-                price: req.body.price,
-                discount: req.body.discount
-            }
-        )
-            .then(function (item) {
-                res.redirect('/admin/products')
-            })
-
+        let errors = validationResult(req);
+        res.send(errors)
+        // if (errors.isEmpty()) {
+        //     model.product.create(
+        //         {
+        //             name: req.body.name,
+        //             description: req.body.description,
+        //             image: req.file ? req.file.filename : '',
+        //             category: req.body.category,
+        //             amount: req.body.amount,
+        //             typeAmount: req.body.typeAmount,
+        //             price: req.body.price,
+        //             discount: req.body.discount
+        //         }
+        //     )
+        //         .then(function () {
+        //             res.redirect('/admin/products')
+        //         })
+        // } else {
+        //     res.render('products/newProduct', { errors: errors.array() })
+        // }
     },
 
     borrarProduct: (req, res) => {
@@ -99,12 +99,10 @@ const navigationController = {
             .then(function (item) {
                 res.redirect('/admin/products')
             })
-
-    }
-
+    },
+    newUser: (req, res, next) => {
+        res.render('user/newUser')
+    },
 }
 
-
 module.exports = navigationController
-
-

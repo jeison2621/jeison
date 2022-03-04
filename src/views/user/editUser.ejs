@@ -11,11 +11,6 @@
             <article class="contenedor-newproduct">
               <h4>EDITAR USUARIO</h4>
 
-              <div class="errors">
-                <ul>
-                </ul>
-              </div>
-
               <form action="/admin/users/editUser/<%=data.id%>" method="post" enctype="multipart/form-data">
 
                 <div class="titulo">
@@ -59,6 +54,14 @@
             </article>
           </section>
           <% } %>
+          <section class="errores">
+            <article>
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
+            </article>
+          </section>
       </main>
       <%- include('../partials/footer') %>
         <script src="/js/valitationsUsers.js"></script>
