@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 
-
 /* agregando configuracion para la sesión*/
 const acceso = require('./middleware/acceso');
 const session = require('express-session');

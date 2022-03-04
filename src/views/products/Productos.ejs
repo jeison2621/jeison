@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %>
+<%- include('../partials/head') %>
 
   <body>
 
-    <%- include('./partials/header') %>
+    <%- include('../partials/header') %>
       <main>
-
-        <h1>Adminstrar productos<a href="/admin/products/newProduct"> +</a></h1>
+        <h1>Administrar productos<a href="/admin/products/newProduct"> +</a></h1>
         
-
           <section class="seccion-contenedora-administrar">
             
             <% if (data) { %>
@@ -19,12 +17,12 @@
                   <div class="contenedor-nombre">
                     <h2><%= product.name%></h2>
                     <div class="contenedor-botones">
-                      <a href="/admin/products/<%=product.id%>""></i>Ver</a>
+                      <a href="/admin/products/<%=product.id%>"></i>Ver</a>
                       <a href="/admin/products/editProduct/<%=product.id%>">Editar</a>
                       <a href="/admin/products/borrar/<%=product.id%>">Eliminar</a>
                     </div>
                   </div>
-
+                  
                   <div class="contenedor-imagen">
                      <img src="/img/products/<%= product.image%>" alt="">
                   <div>
@@ -41,7 +39,7 @@
 
 
 
-         <%- include('./partials/footer') %>
+         <%- include('../partials/footer') %>
      
 
   </body>

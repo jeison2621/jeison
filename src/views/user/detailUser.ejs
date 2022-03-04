@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+  <body>
+
+    <%- include('../partials/header') %>
+      <main>
+
+          <% if (data) { %>
+          <section class="seccion-detalle">            
+          <h2><%= data.name %> <%= data.lastname%></h2>
+          <img src="/img/users/<%= data.avatar%>" alt="">
+          <h4>Email: <%= data.email%></h4>
+          <h5>Rol: <%= data.roles_id%></h5>
+        </section>  
+          <% } %>        
+        
+      </main>
+
+         <%- include('../partials/footer') %>
+  </body>
+  
+</html>

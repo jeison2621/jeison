@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/header') %>
+      <main>
+        <% if (data) { %>
+
+          <section class="seccion-newproduct">
+            <article class="contenedor-newproduct">
+              <h4>EDITAR USUARIO</h4>
+
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
+
+              <form action="/admin/users/editUser/<%=data.id%>" method="post" enctype="multipart/form-data">
+
+                <div class="titulo">
+                  <label for="name">Nombre(s)</label>
+                  <input type="text" name="nombre" id="name" value="<%=data.name%>">
+                </div>
+
+                <div class="titulo">
+                  <label for="lastname">Apellidos</label>
+                  <input type="text" name="apellidos" id="lastname" value="<%=data.lastname%>">
+                </div>
+
+                <div class="titulo">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" value="<%=data.email%>">
+                </div>
+
+
+                <div class="titulo">
+                  <label for="password">Contraseña</label>
+                  <input type="password" name="password" id="password">
+                </div>
+
+                <div class="titulo">
+                  <label for="image">Avatar</label>
+                  <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg">
+                </div>
+
+                <div class="titulo">
+                  <label for="rol">Rol</label>
+                  <select name="rol" id="rol">
+                    <option id="rol" value="">Elija un rol</option>
+                    <option id="rol" value="1" <%=data.roles_id=="1" ? "selected" : "" %>>Administrador</option>
+                    <option id="rol" value="2" <%=data.roles_id=="2" ? "selected" : "" %>>Cliente</option>
+                  </select>
+                </div>
+
+                <input class="enviar" type="submit" value="Editar">
+
+              </form>
+            </article>
+          </section>
+          <% } %>
+      </main>
+      <%- include('../partials/footer') %>
+        <script src="/js/valitationsUsers.js"></script>
+  </body>
+
+</html>

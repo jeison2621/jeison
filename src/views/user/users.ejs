@@ -10,7 +10,7 @@
             
             <% if (data) { %>
               <% data.forEach(function(user){ %>
-                <article class="administrar-usero">
+                <article class="administrar-producto">
 
                   <div class="contenedor-nombre">
                     <h2><%= user.name%></h2>
@@ -20,9 +20,9 @@
                       <a href="/admin/users/borrar/<%=user.id%>">Eliminar</a>
                     </div>
                   </div>
-
+                  
                   <div class="contenedor-imagen">
-                     <img src="/img/users/<%= user.image%>" alt="">
+                     <img src="/img/users/<%= user.avatar%>" alt="">
                   <div>
                     
                     <p></p>

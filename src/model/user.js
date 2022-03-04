@@ -6,7 +6,6 @@ const usersModel = {
         return db.users
             .findAll()
             .then((item) => item)
-            //.then((item)=>console.log(item))
             .catch(err => console.error(err))
 
     },
@@ -14,7 +13,6 @@ const usersModel = {
         return db.users
             .findByPk(id)
             .then((item) => item)
-            //.then((item)=>console.log(item))
             .catch(err => console.error(err))
     },
     create: (usuario) => {
