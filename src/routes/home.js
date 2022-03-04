@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { navigationController} = require('../controller');
 const upload = require('../middleware/multermiddproduct');
-//const { validationNewProduct } = require('../middleware/valitations')
+const { validationNewProduct } = require('../middleware/valitations')
 
 router.get('/',navigationController.getHome)
 router.get('/admin',navigationController.getAdmin)
