@@ -1,4 +1,5 @@
-const model = require('../model')
+const model = require('../model'); 
+const bcrypt = require('bcryptjs');
 
 
 const navigationController = {
@@ -29,7 +30,23 @@ const navigationController = {
         res.render('login')
             .catch(err => next(err))
     },
-
+    guardar:(req, res, next) => {    
+        
+        model.user.create(
+            {
+                name: req.body.nombre,
+                lastname: req.body.apellidos,
+                email: req.body.email,
+                password: req.body.password,
+                avatar: req.file ? req.file.filename: '',
+                roles_id: '2',
+            }
+        )
+            .then(function (item) {
+                res.redirect('/login')
+            })
+            .catch(err => next(err))
+    },
     register: (req, res, next) => {
         res.render('register')
             .catch(err => next(err))
