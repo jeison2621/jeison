@@ -1,5 +1,5 @@
 const model = require('../model')
-const { validationResult } = require('express-validator')
+const bcrypt = require('bcryptjs');
 
 const userController = {
     adminUsers: (req, res, next) => {
@@ -9,24 +9,23 @@ const userController = {
     },
     newUser: (req, res, next) => {
         res.render('user/newUser')
+                    
     },
     createUser: (req, res) => {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            model.user.create(
-                {
-                    name: req.body.nombre,
-                    lastname: req.body.apellidos,
-                    email: req.body.email,
-                    password: req.body.password,
-                    avatar: req.file ? req.file.filename : '',
-                    roles_id: req.body.rol,
-                }
-            )
-                .then(function (item) {
-                    res.redirect('/admin/users')
-                })
-        }
+        console.log(req.body)
+        model.user.create(
+            {
+                name: req.body.nombre,
+                lastname: req.body.apellidos,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                avatar: req.file ? req.file.filename: '',
+                roles_id: req.body.rol,
+            }
+        )
+            .then(function (item) {
+                res.redirect('/admin/users')
+            })
     },
     getEditUsers: (req, res, next) => {
         model.user.findOne(req.params.id)
@@ -41,33 +40,25 @@ const userController = {
             })
     },
     editUsers: (req, res, next) => {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            model.user.update(
-                {
-                    name: req.body.nombre,
-                    lastname: req.body.apellidos,
-                    email: req.body.email,
-                    password: req.body.password,
-                    avatar: req.file ? req.file.filename : '',
-                    roles_id: req.body.rol,
-                }, req.params.id)
-
-                .then(function (item) {
-                    res.redirect('/admin/users/')
-                })
-        }
+        console.log(req.body);
+        model.user.update(
+            {
+                name: req.body.nombre,
+                lastname: req.body.apellidos,
+                email: req.body.email,
+                password: req.body.password,
+                avatar: req.file ? req.file.filename: '',
+                roles_id: req.body.rol,
+            }, req.params.id)
+            
+            .then(function (item) {
+                res.redirect('/admin/users/')
+            })
     },
     borrarUser: (req, res) => {
         model.user.delete(req.params.id)
             .then(function (item) {
                 res.redirect('/admin/users')
-            })
-    },
-    consultEmail: (req, res) => {
-        model.user.consultEmail('diegomduquec@gmail.com')
-            .then(function (item) {
-                res.send(item)
             })
     }
 }

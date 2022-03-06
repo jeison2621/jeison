@@ -14,7 +14,9 @@ const productsModel = {
        return  db.products
                  .findByPk(id)
                  .then((item)=>item)
-                 .catch(err => console.error(err))  
+                 .catch(err => console.error(err))
+         
+         
      }, 
      create:(producto)=>{
        return  db.products.create(producto)

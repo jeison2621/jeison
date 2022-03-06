@@ -1,5 +1,4 @@
 const db = require('../database/models')
-const Op = db.Sequelize.Op;
 
 const usersModel = {
 
@@ -39,21 +38,6 @@ const usersModel = {
             .then((item) => item)
             .catch(err => console.error(err))
     },
-    consultEmail: (email) => {
-        db.users.findAll({
-            where: {
-                email: {
-                    [Op.like]: email
-                }
-            }
-        })
-            .then((item) => item)
-            .catch(err => console.error(err))
-            
-            console.log('--------');
-            console.log(item);
-            console.log('--------');
-    }
 }
 // probando los metodos de userModelOld
 
