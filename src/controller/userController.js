@@ -1,4 +1,5 @@
 const model = require('../model')
+const bcrypt = require('bcryptjs');
 
 const userController = {
     adminUsers: (req, res, next) => {
@@ -17,7 +18,7 @@ const userController = {
                 name: req.body.nombre,
                 lastname: req.body.apellidos,
                 email: req.body.email,
-                password: req.body.password,
+                password: bcrypt.hashSync(req.body.password, 10),
                 avatar: req.file ? req.file.filename: '',
                 roles_id: req.body.rol,
             }
