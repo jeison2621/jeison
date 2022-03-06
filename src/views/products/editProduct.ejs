@@ -9,31 +9,21 @@
           <section class="seccion-newproduct">
             <article class="contenedor-newproduct">
               <h4>EDITAR PRODUCTO</h4>
-
-              <div class="errors">
-                <ul>
-                </ul>
-              </div>
-
               <form action="/admin/products/editProduct/<%=data.id%>?_method=PUT" method="post"
                 enctype="multipart/form-data">
-
                 <div class="titulo">
                   <label for="name">Nombre</label>
                   <input type="text" name='name' id="name" value="<%=data.name%>">
                 </div>
-
                 <div class="titulo">
                   <label for="description">Descripción</label>
                   <input type="text" name="description" id="description" value="<%=data.description%>">
                 </div>
-
                 <div class="titulo">
                   <label for="image">Imagen</label>
                   <input type="file" name="image" id="image"
                     accept="image/png, image/gif, image/jpeg">
                 </div>
-
                 <div class="titulo">
                   <label for="category">Categoría</label>
                   <select name="category" id="category">
@@ -45,12 +35,10 @@
                     <option value="cream" <%= data.category == "cream" ? "selected" : "" %>>Crema</option>
                   </select>
                 </div>
-
                 <div class="titulo">
                   <label for="amount">Cantidad</label>
                   <input type="number" name="amount" id="amount" value="<%=data.amount%>">
                 </div>
-
                 <div class="titulo">
                   <label for="typeAmount">Tipo de Cantidad</label>
                   <select name="typeAmount" id="typeAmount">
@@ -58,12 +46,10 @@
                     <option value="ml" <%= data.typeAmount == "ml" ? "selected" : "" %>>Milílitros (ml.)</option>
                     <option value="floz" <%= data.typeAmount == "floz" ? "selected" : "" %>>Onzas fluidas (fl. oz.)</option>
                   </select>
-
                 </div>
                 <div class="titulo">
                   <label for="price">Precio</label>
                   <input type="number" name="price" id="price" value="<%=data.price%>">
-
                 </div>
                 <div class="titulo">
                   <label for="discount">Descuento</label>
@@ -86,11 +72,17 @@
                     <option value="75" <%= data.discount == "75" ? "selected" : "" %>>75%</option>
                   </select>
                 </div>
-
                 <button type="submit" class="enviar">Actualizar</button>
-
               </form>
               <% } %>
+            </article>
+          </section>
+          <section class="errores">
+            <article>
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
             </article>
           </section>
       </main>

@@ -1,23 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const productController  = require('../controller/productController')
-const upload = require('../middleware/multermidd')
+const productController = require('../controller/productController')
+const upload = require('../middleware/multermiddproduct');
+const { validationsProducts } = require('../middleware')
 
 
 
-//Vista principal de usuarios
+// Administrar productos
+router.get('/',productController.adminProducts)
 
+// Crear productos
+ router.get('/newProduct', productController.createProduct)
+ router.post('/newProduct', upload.single('image'),validationsProducts,productController.guardarProduct)
 
-//Detalle usuario
+// Editar productos
+router.get('/editProduct/:id',productController.getEditProducts)
+router.post('/editProduct/:id', upload.single('image'),validationsProducts,productController.editProducts)
 
+// Eliminar productos
+router.get('/borrar/:id',productController.borrarProduct)
 
-//Crear usuarios
+// Detalle producto
 
-
-// Editar usuarios
-
-
-// Eliminar usuarios
+router.get('/:id', productController.detailProducts)
 
 
 module.exports = router

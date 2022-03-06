@@ -9,48 +9,56 @@
           <article class="contenedor-newproduct">
             <h4>NUEVO USUARIO</h4>
             <form action="/admin/users/newUser" method="post" enctype="multipart/form-data">
-              
+
               <div class="titulo">
                 <label for="name"> Nombre(s)</label>
-                  <input type="text" name="nombre" id="name">                
+                <input type="text" name="nombre" id="name" required>
               </div>
 
               <div class="titulo">
                 <label for="lastname">Apellidos</label>
-                <input type="text" name="apellidos" id="lastname">
+                <input type="text" name="apellidos" id="lastname" required>
               </div>
 
               <div class="titulo">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
               </div>
-              
+
               <div class="titulo">
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" required>
               </div>
 
               <div class="titulo">
                 <label for="image">Avatar</label>
-                <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg">
+                <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg" required>
               </div>
 
               <div class="titulo">
                 <label for="rol">Rol</label>
-                <select name="rol" id="rol">
+                <select name="rol" id="rol" required>
                   <option id="rol" value="">Elija un rol</option>
                   <option id="rol" value="1">Administrador</option>
                   <option id="rol" value="2">Cliente</option>
                 </select>
               </div>
+              
 
-              <input  class="enviar" type="submit" value="Crear">
+
+              <div class="errors">
+                <ul>
+                </ul>
+              </div>
+
+
+              <input class="enviar" type="submit" value="Crear">
             </form>
           </article>
         </section>
       </main>
       <%- include('../partials/footer') %>
-      <script src="/js/valitationsUsers.js"></script>
+        <script src="/js/valitationsUsers.js"></script>
   </body>
 
 </html>

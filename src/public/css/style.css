@@ -244,7 +244,7 @@ footer .seccion-3{
 
 .banner {
   /* width: 100%; */
-  height: 40vh;
+  height: 65vh;
 
   
   
@@ -276,7 +276,76 @@ footer .seccion-3{
 /* *******************************************************************************************************************
 *********************************************************************************************************** */
 
+body{
+  font-family: sans-serif;
+}
 
+.container{
+  margin: auto;
+  background-color: white;
+  width: 80%;
+  padding: 30px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.slider{
+  position: relative;
+  width: 100%;
+  height: 300px;
+
+}
+
+ul.slider li {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background:#fff;
+}
+
+ul.slider li img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+ul.slider li:first-child {
+    opacity: 1; /*Mostramos el primer <li>*/
+}
+
+ul.slider li:target {
+    opacity: 1; /*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.menu{
+  text-align: center;
+  margin: 20px;
+}
+
+.menu li{
+  display: inline-block;
+  text-align: center;
+}
+
+.menu li a{
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background-color: grey;
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  border-radius: 100%;
+}
 /* ----------------------------------------------- Home(/) -------------------------------------------------
 ************************************************************************************************************ */
 main .seccion-contenedora{
@@ -296,8 +365,13 @@ main .articulo-productos{
   margin-top: 10px;
   margin-bottom: 50px;
   border-radius: 10%;
-  border: grey solid;
+  
   text-align: center;
+
+  box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -moz-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+
   
 }
 
@@ -340,27 +414,37 @@ main .administrar-usuarios{
   width: 330px;
   height: 300px;
   margin: 20px;
-  background: rgb(199, 109, 109);
+
   color: white;
   margin-top: 10px;
   margin-bottom: 50px;
   border-radius: 10%;
-  border: black solid;
+
   text-align: center;
+
+  
+  box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -moz-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
   
 }
 
 
 main .administrar-usuarios img{
   width: 100%;
-  height: 70%;
+  height: 100%;
+  border-radius: 6%;
   background: transparent;
+
 }
+
 
 main .administrar-productos img{
   width: 100%;
-  height: 70%;
+  height: 100%;
+  border-radius: 6%;
   background: transparent;
+  
 }
 
 main .administrar-productos{
@@ -372,8 +456,13 @@ main .administrar-productos{
   color: white;
   margin-bottom: 50px;
   border-radius: 10%;
-  border: black solid;
+  
   text-align: center;
+
+  
+  box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
+  -moz-box-shadow: 10px 11px 64px -9px rgba(0,0,0,0.45);
   
 }
 
@@ -537,6 +626,9 @@ main .contenedor-nombre .contenedor-botones{
 
 .enviar{
   margin: auto;
+  margin-top: 55px;
+  
+
   width: 50%;
   background: brown;  ;
   color: aliceblue;
