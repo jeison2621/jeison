@@ -14,17 +14,27 @@
                             </ul>
                           </div>
 
-                <form action="/users/login" method="post">
+                <form action="/login" method="post">
 
                     <div class="titulo">
                         <label for="email" id="email-user">Email(*)</label>
                         <input type="email" name="email" id="email">
                     </div>
+                    <% if(typeof(errors) != 'undefined' && errors.email){%>
+                        <span style="color: red;">
+                          <%= errors.email.msg %>
+                        </span>
+                     <%}%>
 
                     <div class="titulo">
                         <label for="password" id="password-user">Contraseña(*)</label>
                         <input type="password" name="password" id="password">
                     </div>
+                    <% if(typeof(errors) != 'undefined' && errors.password){%>
+                        <span style="color: red;">
+                          <%= errors.password.msg %>
+                        </span>
+                     <%}%>
 
                     <p class="titulo">
                         <input type="checkbox" name="recordarme"><label class="checkbox-inline">Recordarme</label>

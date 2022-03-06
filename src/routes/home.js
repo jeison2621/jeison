@@ -8,10 +8,15 @@ router.get('/',navigationController.getHome)
 router.get('/admin',navigationController.getAdmin)
 
 router.get('/register',navigationController.register)
-router.post('/register', upload.single('image'), navigationController.guardar)
+router.post('/register', upload.single('image'), navigationController.guardar);
 
 
-router.get('/login',navigationController.login)
+router.get('/login',navigationController.login); 
+router.post('/login', navigationController.ingresar);
+
+
+router.get('/logout',navigationController.logout); 
+
 
 
 
