@@ -32,7 +32,7 @@ const navigationController = {
     },
 
     login: (req, res, next) => {
-        res.render('rarito')
+        res.render('login')
             .catch(err => next(err))
     },
     guardar: (req, res, next) => {
