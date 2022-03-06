@@ -11,8 +11,8 @@ window.addEventListener('load', function () {
             errores.push("Debe completar el campo nombre(s)")
         }
 
-        let lastname = document.querySelector('#lastname')       
-        if (lastname.value == "") {
+        let description = document.querySelector('#lastname')       
+        if (description.value == "") {
             errores.push("Debe completar el campo apellidos")
         }
 
