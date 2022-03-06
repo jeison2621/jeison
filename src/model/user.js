@@ -22,22 +22,29 @@ const usersModel = {
     },
     update: (usuario, id) => {
         return db.users.update(usuario, {
-            where: {
-                id: id
-            }
-        })
+                where: {
+                    id: id
+                }
+            })
             .then((item) => item)
             .catch(err => console.error(err))
     },
     delete: (id) => {
         return db.users.destroy({
-            where: {
-                id: id
-            }
-        })
+                where: {
+                    id: id
+                }
+            })
             .then((item) => item)
             .catch(err => console.error(err))
     },
+    findByEmail: (email) => {
+        return db.users.findAll((item) => item.email === email)
+            .then((item) => item)
+            .catch(err => console.error(err))
+
+    }
+
 }
 // probando los metodos de userModelOld
 
