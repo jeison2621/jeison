@@ -4,8 +4,6 @@ const productController = require('../controller/productController')
 const upload = require('../middleware/multermiddproduct');
 const { validationsProducts } = require('../middleware')
 
-
-
 // Administrar productos
 router.get('/',productController.adminProducts)
 
@@ -23,6 +21,5 @@ router.get('/borrar/:id',productController.borrarProduct)
 // Detalle producto
 
 router.get('/:id', productController.detailProducts)
-
 
 module.exports = router

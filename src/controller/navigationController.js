@@ -1,6 +1,4 @@
 const model = require('../model'); 
-const bcrypt = require('bcryptjs');
-
 
 const navigationController = {
     getHome: (req, res, next) => {
