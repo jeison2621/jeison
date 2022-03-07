@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { navigationController, apiController } = require('../controller');
 const upload = require('../middleware/multermidd')
+const { validationsUsers } = require('../middleware')
+
 
 
 
@@ -17,7 +19,7 @@ router.get('/api/products/search',apiController.searchproducts)
 router.get('/admin',navigationController.getAdmin)
 
 router.get('/register',navigationController.register)
-router.post('/register', upload.single('image'), navigationController.guardar);
+router.post('/register', upload.single('image'),validationsUsers,navigationController.guardar);
 
 
 router.get('/login',navigationController.login); 

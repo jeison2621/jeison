@@ -6,13 +6,10 @@
 
     <main>
         <section class="seccion-newproduct">
-            <article class="contenedor-newproduct">
+            <article class="contenedor-login">
                 <h4>INGRESAR</h4>
 
-                <div class="errors">
-                    <ul>
-                    </ul>
-                  </div>
+ 
 
         <form action="/login" method="post">
 
@@ -32,12 +29,24 @@
 
             <p class="titulo">¿Nuevo cliente? <a class="referencia" href="/register">Crear cuenta</a></p>
 
-            <input type="submit" class="enviar" value="Ingresar">
+
+            <div class="errors">
+                <ul>
+                </ul>
+              </div>
+
+
+              <div class="titulo">
+                <input type="submit" class="enviar" value="Ingresar">
+              </div>
+
+            
         </form>
     </article>
     </section>
     </main>
     <%- include('./partials/footer') %>
+    <script src="/js/valitationsUsers.js"></script>
     
 </body>
 </html>

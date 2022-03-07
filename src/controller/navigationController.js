@@ -1,14 +1,14 @@
 const model = require('../model');
-const bcrypt = require('bcryptjs');
-const session = require('express-session');
-
+const req = require('express/lib/request');
 const bcryptjs = require('bcryptjs');
-const {
-    validationResult, body
-} = require('express-validator');
+const {validationResult} = require('express-validator');
 
 const navigationController = {
     getHome: (req, res, next) => {
+        console.log(req.session)
+        
+
+
         model.product.findAll().then(item => {
             res.render('index', {
                 title: "Parfum Légende", // muestra los datos de los productos en la vista Principal(/)
@@ -39,11 +39,17 @@ const navigationController = {
     },
     guardar: (req, res, next) => {
 
+        let errors = validationResult(req)
+        if(errors.errors.length>0){
+            return res.render('/register')
+        }
+        else{
+            
         model.user.create({
             name: req.body.nombre,
             lastname: req.body.apellidos,
             email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10),
+            password: bcryptjs.hashSync(req.body.password, 10),
             avatar: req.file ? req.file.filename : '',
             roles_id: '2',
         })
@@ -51,6 +57,8 @@ const navigationController = {
                 res.redirect('/login')
             })
             .catch(err => next(err))
+        }
+
     },
     register: (req, res, next) => {
         res.render('register')
@@ -59,32 +67,27 @@ const navigationController = {
 
 
     ingresar2: (req, res) => {
-        let resultValidation = validationResult(req);
-        if (resultValidation.errors.length > 0) {
-            return res.render('login'), {
-                errors: resultValidation.mapped(),
-                oldData: req.body,
-            }
-        } else {
-            model.user.findByEmail(req.body.email)
-                .then(function (item) {
-                    let usuario= item[0]
-                    
 
-                    if(usuario){
-                        const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
-                        if(passwordOk){
-                            res.send( item[0].name +"logueado...")
-                        }
-                        else{
-                            res.redirect('/login')
-                        }
-                    }
+        // let resultValidation = validationResult(req);
+        // if(validationResult.errors.length>0){
+        //     return res.send("hay errores")
+        // }
 
-                })
+        // model.user.findByEmail(req.body.email)
+        //     .then(function (item) {
+        //         let usuario = item[0]
 
 
-        }
+        //         if (usuario) {
+        //             const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
+        //             if (passwordOk) {
+        //                 res.send(item[0].name + "logueado...")
+        //             }
+        //             else {
+        //                 res.redirect('/login')
+        //             }
+        //         }
+        //     })
 
     },
 
@@ -136,6 +139,11 @@ const navigationController = {
         /*pendiente */
         res.redirect('/')
             .catch(err => next(err))
+    },
+    guardar2: (req,res)=>{
+
+
+
     }
 
 
