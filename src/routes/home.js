@@ -4,6 +4,7 @@ const { navigationController} = require('../controller');
 const upload = require('../middleware/multermidd')
 
 
+
 router.get('/',navigationController.getHome)
 router.get('/admin',navigationController.getAdmin)
 

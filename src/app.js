@@ -26,7 +26,7 @@ app.use(methodOverride('_method'));
 /*usando session y configuracion para el login*/
 
 app.use(session({
-  secret : 'topSecret',
+  secret : 'topSecretuiu',
   resave: true,
   saveUninitialized: true,
 }));

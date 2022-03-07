@@ -1,5 +1,7 @@
 const model = require('../model');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
+
 const {
     validationResult
 } = require('express-validator');
@@ -54,6 +56,13 @@ const navigationController = {
         res.render('register')
             .catch(err => next(err))
     },
+
+
+    ingresar2:(req,res)=>{
+        let u = 5
+        req.session.id = u
+        res.render.id(req.session.id)
+    },
     ingresar: (req, res, next) => {
 
         let resultValidation = validationResult(req);
@@ -63,14 +72,16 @@ const navigationController = {
                 oldData: req.body,
             };
         } else {
-            const usuarioLogeado = model.user.findByEmail(req.body.email);
-            
+
+            usuarioLogeado = model.user.findByEmail(req.body.email);
+        
+            res.session.isUserLogged = false
             req.session.isUserLogged = false;
-            if (usuarioLogeado) {
+            if (usuarioLogeado[0]) {
                 const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogeado.password); // Hasheo de la contraseña
                 if (passwordOk) {
                     delete usuarioLogeado.password;
-                    req.session.usuario = usuarioLogeado;
+                    req.session.customerLogged = usuarioLogeado;
                     req.session.isUserLogged = true;
                     // cookies 
                     if (req.body.recordarme) {
@@ -90,10 +101,9 @@ const navigationController = {
                 };
             }
         } 
-        
+    },
         // validaciones
 
-    },
     logout: (req, res, next) => {
         /*pendiente */
         res.redirect('/')
