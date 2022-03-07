@@ -12,7 +12,7 @@ const usersModel = {
     findOne: (id) => {
         return db.users
             .findByPk(id)
-            .then((item) => item)
+            .then((item) => item )            
             .catch(err => console.error(err))
     },
     create: (usuario) => {
@@ -39,7 +39,11 @@ const usersModel = {
             .catch(err => console.error(err))
     },
     findByEmail: (email) => {
-        return db.users.findAll((item) => item.email === email)
+        return db.users.findAll({
+            where: {
+                email: email
+            }
+        })
             .then((item) => item)
             .catch(err => console.error(err))
 
@@ -52,7 +56,10 @@ const usersModel = {
 //usersModel.findAll() 
 
 //2-usersModelOld.findOne(2) asi consultamos un usuario por id de nuestra db
-//usersModel.findOne(6)
+//usersModel.findOne(11)
+
+//usersModel.findByEmail('steven@gmail.com');
+
 //3- asi insertamos los datos en nuestra db  los campos deben ser identicos unciona ok 
 // usersModel.create(
 //      {
@@ -74,4 +81,6 @@ const usersModel = {
 
 
 // 4- usersModelOld.delete(3)   asi borramos un registro de la db
+
+
 module.exports = usersModel

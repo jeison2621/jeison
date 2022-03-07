@@ -1,7 +1,7 @@
 const model = require('../model');
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 const {
-    validationResult
+    validationResult, body
 } = require('express-validator');
 
 
@@ -54,6 +54,7 @@ const navigationController = {
         res.render('register')
             .catch(err => next(err))
     },
+    
     ingresar: (req, res, next) => {
 
         let resultValidation = validationResult(req);
@@ -62,16 +63,17 @@ const navigationController = {
                 errors: resultValidation.mapped(),
                 oldData: req.body,
             };
-        } else {
-            const usuarioLogeado = model.user.findByEmail(req.body.email);
-            
-            req.session.isUserLogged = false;
-            if (usuarioLogeado) {
-                const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogeado.password); // Hasheo de la contraseña
+        } else{
+            model.user.findByEmail(req.body.email)
+        .then(function(item){
+            let usuarioLogueado = item[0];
+
+            if (usuarioLogueado) {
+                const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogueado.password); // Hasheo de la contraseña
                 if (passwordOk) {
-                    delete usuarioLogeado.password;
-                    req.session.usuario = usuarioLogeado;
-                    req.session.isUserLogged = true;
+                    delete usuarioLogueado.password;
+                    //req.session.usuario = usuarioLogueado;
+                    //req.session.isUserLogged = true;
                     // cookies 
                     if (req.body.recordarme) {
                         res.cookie('email', req.body.email, {
@@ -90,10 +92,22 @@ const navigationController = {
                 };
             }
         } 
+             
+            
+        )
+
+        }
         
-        // validaciones
+        
+        
+
+
+        
+        
 
     },
+
+        
     logout: (req, res, next) => {
         /*pendiente */
         res.redirect('/')
