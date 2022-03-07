@@ -2,10 +2,10 @@ const model = require('../model');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 
+const bcryptjs = require('bcryptjs');
 const {
-    validationResult
+    validationResult, body
 } = require('express-validator');
-
 
 const navigationController = {
     getHome: (req, res, next) => {
@@ -40,13 +40,13 @@ const navigationController = {
     guardar: (req, res, next) => {
 
         model.user.create({
-                name: req.body.nombre,
-                lastname: req.body.apellidos,
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
-                avatar: req.file ? req.file.filename : '',
-                roles_id: '2',
-            })
+            name: req.body.nombre,
+            lastname: req.body.apellidos,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            avatar: req.file ? req.file.filename : '',
+            roles_id: '2',
+        })
             .then(function (item) {
                 res.redirect('/login')
             })
@@ -58,51 +58,79 @@ const navigationController = {
     },
 
 
-    ingresar2:(req,res)=>{
-        let u = 5
-        req.session.id = u
-        res.render.id(req.session.id)
-    },
-    ingresar: (req, res, next) => {
-
+    ingresar2: (req, res) => {
         let resultValidation = validationResult(req);
         if (resultValidation.errors.length > 0) {
             return res.render('login'), {
                 errors: resultValidation.mapped(),
                 oldData: req.body,
-            };
-        } else {
-
-            usuarioLogeado = model.user.findByEmail(req.body.email);
-        
-            res.session.isUserLogged = false
-            req.session.isUserLogged = false;
-            if (usuarioLogeado[0]) {
-                const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogeado.password); // Hasheo de la contraseña
-                if (passwordOk) {
-                    delete usuarioLogeado.password;
-                    req.session.customerLogged = usuarioLogeado;
-                    req.session.isUserLogged = true;
-                    // cookies 
-                    if (req.body.recordarme) {
-                        res.cookie('email', req.body.email, {
-                            maxAge: 1000 * 60 * 3
-                        });
-                    }
-                    return res.redirect('/admin');
-                }
-            }  else {
-                res.render('login'), {
-                    errors: {
-                        email: {
-                            msg: 'Las credenciales son inválidas',
-                        },
-                    },
-                };
             }
-        } 
+        } else {
+            model.user.findByEmail(req.body.email)
+                .then(function (item) {
+                    let usuario= item[0]
+                    
+
+                    if(usuario){
+                        const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
+                        if(passwordOk){
+                            res.send( item[0].name +"logueado...")
+                        }
+                        else{
+                            res.redirect('/login')
+                        }
+                    }
+
+                })
+
+
+        }
+
     },
-        // validaciones
+
+        // ingresar: (req, res, next) => {
+        //     let resultValidation = validationResult(req);
+        //     if (resultValidation.errors.length > 0) {
+        //         return res.render('login'), {
+        //             errors: resultValidation.mapped(),
+        //             oldData: req.body,
+        //         }
+
+        // else {
+
+        //         model.user.findByEmail(req.body.email)
+        //             .then(function (item) {
+        //                 let usuarioLogueado = item[0];
+
+        //                 if (usuarioLogueado) {
+        //                     const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogueado.password); // Hasheo de la contraseña
+        //                     if (passwordOk) {
+        //                         delete usuarioLogueado.password;
+        //                         //req.session.usuario = usuarioLogueado;
+        //                         //req.session.isUserLogged = true;
+        //                         // cookies 
+        //                         if (req.body.recordarme) {
+        //                             res.cookie('email', req.body.email, {
+        //                                 maxAge: 1000 * 60 * 3
+        //                             });
+        //                         }
+        //                         return res.redirect('/admin');
+        //                     }
+        //                 } else {
+        //                     res.render('login'), {
+        //                         errors: {
+        //                             email: {
+        //                                 msg: 'Las credenciales son inválidas',
+        //                             },
+        //                         },
+        //                     };
+        //                 }
+        //             } 
+        //     }
+        // },
+    // validaciones
+
+
 
     logout: (req, res, next) => {
         /*pendiente */

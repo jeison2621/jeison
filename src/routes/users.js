@@ -4,11 +4,8 @@ const userController = require('../controller/userController')
 const upload = require('../middleware/multermidd')
 const { validationsUsers } = require('../middleware')
 
-
 //Vista principal de usuarios
 router.get('/', userController.adminUsers)
-
-
 
 //Crear usuarios
 router.get('/newUser', userController.newUser)
