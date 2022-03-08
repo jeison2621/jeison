@@ -616,7 +616,7 @@ main .contenedor-nombre .contenedor-botones{
 .contenedor-login form .errors{
   margin-top: 0;
   height: 90px;
-  background: rebeccapurple;
+  
   flex-wrap: wrap;
 }
 
