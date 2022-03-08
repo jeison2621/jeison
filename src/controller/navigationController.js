@@ -136,14 +136,13 @@ const navigationController = {
         res.redirect('/')
             .catch(err => next(err))
     },
-    guardar2: (req,res)=>{
-
-
-
+    
+    totalCategories: (req, res) => {
+        model.user.totalcategories().then(item => {
+            console.log(item);
+            res.send(item)
+        }).catch(err => next(err))
     }
-
-
 }
-
 
 module.exports = navigationController

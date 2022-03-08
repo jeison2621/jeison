@@ -6,10 +6,12 @@ const { validationsUsers } = require('../middleware')
 
 
 
-
 router.get('/',navigationController.getHome)
 
 //API
+router.get('/api',apiController.api)
+router.get('/api/products/page=:id', apiController.pages)
+
 router.get('/api/users',apiController.apiusers)
 router.get('/api/products',apiController.apiproducts)
 
@@ -21,13 +23,13 @@ router.get('/admin',navigationController.getAdmin)
 router.get('/register',navigationController.register)
 router.post('/register', upload.single('image'),validationsUsers,navigationController.guardar);
 
-
 router.get('/login',navigationController.login); 
 router.post('/login', navigationController.ingresar2);
 
-
 router.get('/logout',navigationController.logout); 
 
+// Total Categoría
+router.get('/category',navigationController.totalCategories)
 
 router.get('/:id',navigationController.getDetalle)
 

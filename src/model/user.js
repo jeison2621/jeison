@@ -11,10 +11,10 @@ const usersModel = {
             .catch(err => console.error(err))
 
     },
-    findOne: (id) => { 
+    findOne: (id) => {
         return db.users
             .findByPk(id)
-            .then((item) => item )            
+            .then((item) => item)
             .catch(err => console.error(err))
     },
     create: (usuario) => {
@@ -36,19 +36,19 @@ const usersModel = {
     
     update: (usuario, id) => {
         return db.users.update(usuario, {
-                where: {
-                    id: id
-                }
-            })
+            where: {
+                id: id
+            }
+        })
             .then((item) => item)
             .catch(err => console.error(err))
     },
     delete: (id) => {
         return db.users.destroy({
-                where: {
-                    id: id
-                }
-            })
+            where: {
+                id: id
+            }
+        })
             .then((item) => item)
             .catch(err => console.error(err))
     },
@@ -71,7 +71,15 @@ const usersModel = {
         })
             .then((item) => item)
             .catch(err => console.error(err))
-    }
+    },
+    totalcategories: () => {
+        return db.users.findAll({
+            attributes: ["category"],
+            group: "category",
+        })
+            .then((item) => item)
+            .catch(err => console.error(err))
+    },
 }
 
 module.exports = usersModel
