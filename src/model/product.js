@@ -38,14 +38,25 @@ const productsModel = {
              }})
  
              .then((item)=>item)
-             .catch(err => console.error(err))
-         
-     
-     },
+             .catch(err => console.error(err))      
+    },
+    pages: (page) => {
+        let count = 2;
+       
+        if (page < 0) {
+            page = 0
+        } else if (page % 2) {
+            
+        } else {
+
+        }
+
+        return  db.products.findAll({
+            offset: 4, limit: 2,
+        })
+        .then((item)=>item)
+        .catch(err => console.error(err))         
+    }
  }
 
- //productsModel.findAll() 
-
-module.exports =  productsModel 
-
-
+module.exports =  productsModel

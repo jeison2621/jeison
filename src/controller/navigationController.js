@@ -37,13 +37,13 @@ const navigationController = {
     guardar: (req, res, next) => {
 
         model.user.create({
-                name: req.body.nombre,
-                lastname: req.body.apellidos,
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
-                avatar: req.file ? req.file.filename : '',
-                roles_id: '2',
-            })
+            name: req.body.nombre,
+            lastname: req.body.apellidos,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            avatar: req.file ? req.file.filename : '',
+            roles_id: '2',
+        })
             .then(function (item) {
                 res.redirect('/login')
             })
@@ -53,7 +53,7 @@ const navigationController = {
         res.render('register')
             .catch(err => next(err))
     },
-    
+
     ingresar: (req, res, next) => {
 
         let resultValidation = validationResult(req);
@@ -62,59 +62,48 @@ const navigationController = {
                 errors: resultValidation.mapped(),
                 oldData: req.body,
             };
-        } else{
+        } else {
             model.user.findByEmail(req.body.email)
-        .then(function(item){
-            let usuarioLogueado = item[0];
+                .then(function (item) {
+                    let usuarioLogueado = item[0];
 
-            if (usuarioLogueado) {
-                const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogueado.password); // Hasheo de la contraseña
-                if (passwordOk) {
-                    delete usuarioLogueado.password;
-                    //req.session.usuario = usuarioLogueado;
-                    //req.session.isUserLogged = true;
-                    // cookies 
-                    if (req.body.recordarme) {
-                        res.cookie('email', req.body.email, {
-                            maxAge: 1000 * 60 * 3
-                        });
+                    if (usuarioLogueado) {
+                        const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogueado.password); // Hasheo de la contraseña
+                        if (passwordOk) {
+                            delete usuarioLogueado.password;
+                            //req.session.usuario = usuarioLogueado;
+                            //req.session.isUserLogged = true;
+                            // cookies 
+                            if (req.body.recordarme) {
+                                res.cookie('email', req.body.email, {
+                                    maxAge: 1000 * 60 * 3
+                                });
+                            }
+                            return res.redirect('/admin');
+                        }
+                    } else {
+                        res.render('login'), {
+                            errors: {
+                                email: {
+                                    msg: 'Las credenciales son inválidas',
+                                },
+                            },
+                        };
                     }
-                    return res.redirect('/admin');
-                }
-            }  else {
-                res.render('login'), {
-                    errors: {
-                        email: {
-                            msg: 'Las credenciales son inválidas',
-                        },
-                    },
-                };
-            }
-        } 
-             
-            
-        )
-
+                })
         }
-        
-        
-        
-
-
-        
-        
-
     },
-
-        
     logout: (req, res, next) => {
         /*pendiente */
         res.redirect('/')
             .catch(err => next(err))
+    },
+    totalCategories: (req, res) => {
+        model.user.totalcategories().then(item => {
+            console.log(item);
+            res.send(item)
+        }).catch(err => next(err))
     }
-
-
 }
-
 
 module.exports = navigationController
