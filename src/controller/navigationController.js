@@ -105,6 +105,9 @@ const navigationController = {
             console.log(item);
             res.send(item)
         }).catch(err => next(err))
+    },
+    productCart: (req, res) => {
+        res.render('productCart');
     }
 }
 

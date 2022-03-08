@@ -9,6 +9,8 @@ const { acceso } = require('../middleware')
 
 router.get('/',navigationController.getHome)
 
+router.get('/products/cart', navigationController.productCart);
+
 //API
 router.get('/api',apiController.api)
 router.get('/api/products/page=:id', apiController.pages)
