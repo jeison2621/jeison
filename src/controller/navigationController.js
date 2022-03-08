@@ -66,75 +66,38 @@ const navigationController = {
     },
 
 
-    ingresar2: (req, res) => {
+    ingresar: (req, res) => {
+        const errors = validationResult(req);
 
+        //if (errors.isEmpty()) {
+            
+            let usuarioLogueado = model.user.findByEmail(req.cookies.email); 
+            console.log(usuarioLogueado);
+            
+            //Como podemos modificar nuestros req.body
+            delete usuarioLogueado.password;
+            
+            console.log(req.session.usuario);
+            
+            req.session.usuario = usuarioLogueado; //Guardar del lado del servidor
+            //Aquí voy a guardar las cookies del usuario que se loguea
+            if(req.body.recordarme){
+              res.cookie('email',usuarioLogueado.email,{maxAge: 1000 * 60 * 60 * 24})
+            }
+            return res.redirect('/'); //Aquí ustedes mandan al usuario para donde quieran (Perfil- home - a donde deseen)
 
-         model.user.findByEmail(req.body.email)
-             .then(function (item) {
-                 let usuario = item[0]
-
-
-                 if (usuario) {
-                     const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
-                     if (passwordOk) {
-                         res.send(item[0].name + "logueado...")
-                     }
-                     else {
-                         res.redirect('/login')
-                     }
-                 }
-             })
-
+        /*} else {
+            //Devolver a la vista los errores
+            res.render(path.resolve(__dirname, '../views/usuarios/login'), {
+                errors: errors.mapped(),
+                old: req.body
+            });
+        }*/
     },
-
-        // ingresar: (req, res, next) => {
-        //     let resultValidation = validationResult(req);
-        //     if (resultValidation.errors.length > 0) {
-        //         return res.render('login'), {
-        //             errors: resultValidation.mapped(),
-        //             oldData: req.body,
-        //         }
-
-        // else {
-
-        //         model.user.findByEmail(req.body.email)
-        //             .then(function (item) {
-        //                 let usuarioLogueado = item[0];
-
-        //                 if (usuarioLogueado) {
-        //                     const passwordOk = bcryptjs.compareSync(req.body.password, usuarioLogueado.password); // Hasheo de la contraseña
-        //                     if (passwordOk) {
-        //                         delete usuarioLogueado.password;
-        //                         //req.session.usuario = usuarioLogueado;
-        //                         //req.session.isUserLogged = true;
-        //                         // cookies 
-        //                         if (req.body.recordarme) {
-        //                             res.cookie('email', req.body.email, {
-        //                                 maxAge: 1000 * 60 * 3
-        //                             });
-        //                         }
-        //                         return res.redirect('/admin');
-        //                     }
-        //                 } else {
-        //                     res.render('login'), {
-        //                         errors: {
-        //                             email: {
-        //                                 msg: 'Las credenciales son inválidas',
-        //                             },
-        //                         },
-        //                     };
-        //                 }
-        //             } 
-        //     }
-        // },
-    // validaciones
-
-
-
-    logout: (req, res, next) => {
-        /*pendiente */
-        res.redirect('/')
-            .catch(err => next(err))
+    logout: (req, res) => {
+        req.session.destroy();
+        res.cookie('email',null,{maxAge: -1});
+        res.redirect('/');
     },
     
     totalCategories: (req, res) => {

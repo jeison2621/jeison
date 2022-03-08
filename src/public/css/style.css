@@ -16,6 +16,12 @@ main{
   background: white
 }
 
+.avatar img {
+  width: 10vh;
+  height: 10vh;
+
+}
+
 
 /* 
 ----------------------------------------

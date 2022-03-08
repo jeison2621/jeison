@@ -10,6 +10,18 @@ const app = express();
 const acceso = require('./middleware/acceso');
 const session = require('express-session');
 
+/*usando session y configuracion para el login*/
+
+app.use(session({
+  secret : 'topSecretuiu',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(cookieParser());
+
+app.use(acceso);
+
 
 
 
@@ -26,17 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes'));
 app.use(methodOverride('_method')); 
 
-/*usando session y configuracion para el login*/
 
-app.use(session({
-  secret : 'topSecretuiu',
-  resave: false,
-  saveUninitialized: true,
-}));
-
-app.use(acceso);
-
-app.use(cookieParser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

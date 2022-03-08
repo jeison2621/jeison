@@ -3,6 +3,7 @@ const router = express.Router();
 const { navigationController, apiController } = require('../controller');
 const upload = require('../middleware/multermidd')
 const { validationsUsers } = require('../middleware')
+const { acceso } = require('../middleware')
 
 
 
@@ -24,7 +25,7 @@ router.get('/register',navigationController.register)
 router.post('/register', upload.single('image'),validationsUsers,navigationController.guardar);
 
 router.get('/login',navigationController.login); 
-router.post('/login', navigationController.ingresar2);
+router.post('/login', acceso,  navigationController.ingresar);
 
 router.get('/logout',navigationController.logout); 
 
