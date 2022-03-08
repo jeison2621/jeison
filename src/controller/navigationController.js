@@ -68,26 +68,22 @@ const navigationController = {
 
     ingresar2: (req, res) => {
 
-        // let resultValidation = validationResult(req);
-        // if(validationResult.errors.length>0){
-        //     return res.send("hay errores")
-        // }
 
-        // model.user.findByEmail(req.body.email)
-        //     .then(function (item) {
-        //         let usuario = item[0]
+         model.user.findByEmail(req.body.email)
+             .then(function (item) {
+                 let usuario = item[0]
 
 
-        //         if (usuario) {
-        //             const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
-        //             if (passwordOk) {
-        //                 res.send(item[0].name + "logueado...")
-        //             }
-        //             else {
-        //                 res.redirect('/login')
-        //             }
-        //         }
-        //     })
+                 if (usuario) {
+                     const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
+                     if (passwordOk) {
+                         res.send(item[0].name + "logueado...")
+                     }
+                     else {
+                         res.redirect('/login')
+                     }
+                 }
+             })
 
     },
 

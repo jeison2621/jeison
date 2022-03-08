@@ -65,7 +65,8 @@ header .seccion-1 img{
   width: 60px;
   height: 25;
   border-radius: 10%;
-  border :brown solid  1px
+  border :brown solid  1px;
+  object-fit: cover
 }
 header .seccion-1 h1{
   color: white;
@@ -382,6 +383,7 @@ main .articulo-productos h2{
 main .articulo-productos img{
   width: 80%;
   height: 200px;
+  object-fit: cover
 }
 
 
@@ -611,6 +613,24 @@ main .contenedor-nombre .contenedor-botones{
   
 
 }
+.contenedor-login form .errors{
+  margin-top: 0;
+  height: 90px;
+  background: rebeccapurple;
+  flex-wrap: wrap;
+}
+
+.contenedor-login form .enviar{
+  margin: auto;
+  margin-top: 0px;
+  width: 50%;
+  background: brown;  ;
+  color: aliceblue;
+}
+
+.contenedor-login a {
+  color: brown;
+}
 /* 
 /* -----------------------------------------------------------------------------------------------------------------------------------------
 ***********************************************************************(/Register)---------------------------------------------------------*/
@@ -767,8 +787,9 @@ main .seccion-detalle{
 
 .seccion-detalle img {
   margin:auto;
-  width: 80%;
-  height: 70%;
+  width: 70%;
+  height: 60%;
+  object-fit: cover
 }
 
 
