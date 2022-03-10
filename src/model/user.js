@@ -21,19 +21,8 @@ const usersModel = {
         return db.users.create(usuario)
             .then((item) => item)
             .catch(err => console.error(err))
-    },
+    },    
 
-
-
-
-
-
-
-
-
-
-
-    
     update: (usuario, id) => {
         return db.users.update(usuario, {
             where: {

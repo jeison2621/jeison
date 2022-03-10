@@ -5,13 +5,16 @@ window.addEventListener('load', function () {
     form.addEventListener("submit", function (e) {
         let errores = [];
 
+
+        let ulErrores = document.querySelector('.errors')
         let email = document.querySelector('#email')
         if (email.value == "") {
             errores.push("Debe completar el campo email")
         }        
-        let category = document.querySelector('#password')
-        if (category.value == "") {
+        let password = document.querySelector('#password')
+        if (password.value == "") {
             errores.push("Debe completar el campo contraseña")
+            
         }
  
         if (errores.length > 0) {
@@ -24,3 +27,7 @@ window.addEventListener('load', function () {
         }        
     })
 })
+
+
+
+

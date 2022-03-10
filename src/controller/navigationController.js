@@ -67,32 +67,19 @@ const navigationController = {
 
 
     ingresar: (req, res) => {
-        const errors = validationResult(req);
+        
+        let errors = validationResult(req)
+        if(errors.errors.length>0){
+            return res.render('login')
+        }
+        else{
+         model.user.findAll()
+         .them(item=>{
+                console.log(item)
 
-        //if (errors.isEmpty()) {
+            })
             
-            let usuarioLogueado = model.user.findByEmail(req.cookies.email); 
-            console.log(usuarioLogueado);
-            
-            //Como podemos modificar nuestros req.body
-            delete usuarioLogueado.password;
-            
-            console.log(req.session.usuario);
-            
-            req.session.usuario = usuarioLogueado; //Guardar del lado del servidor
-            //Aquí voy a guardar las cookies del usuario que se loguea
-            if(req.body.recordarme){
-              res.cookie('email',usuarioLogueado.email,{maxAge: 1000 * 60 * 60 * 24})
-            }
-            return res.redirect('/'); //Aquí ustedes mandan al usuario para donde quieran (Perfil- home - a donde deseen)
-
-        /*} else {
-            //Devolver a la vista los errores
-            res.render(path.resolve(__dirname, '../views/usuarios/login'), {
-                errors: errors.mapped(),
-                old: req.body
-            });
-        }*/
+        }
     },
     logout: (req, res) => {
         req.session.destroy();
@@ -110,5 +97,8 @@ const navigationController = {
         res.render('productCart');
     }
 }
+
+
+ingresar()
 
 module.exports = navigationController
