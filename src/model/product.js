@@ -3,7 +3,9 @@ const productsModel = {
 
     findAll:()=>{
         return db.products  // nombre de la tabla en da db
-                   .findAll()
+                   .findAll({
+                    order:[['id','DESC']]
+                   })
                    .then((item)=>item)
                    //.then((item)=>console.log(item))
                    .catch(err => console.error(err))
