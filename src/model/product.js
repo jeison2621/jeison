@@ -1,5 +1,4 @@
 const db = require('../database/models')
-
 const productsModel = {
 
     findAll:()=>{
@@ -9,7 +8,8 @@ const productsModel = {
                    //.then((item)=>console.log(item))
                    .catch(err => console.error(err))
          
-     },
+     
+        },
      findOne:(id)=>{
        return  db.products
                  .findByPk(id)
@@ -58,5 +58,6 @@ const productsModel = {
         .catch(err => console.error(err))         
     }
  }
+
 
 module.exports =  productsModel

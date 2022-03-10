@@ -73,10 +73,24 @@ const navigationController = {
             return res.render('login')
         }
         else{
-         model.user.findAll()
-         .them(item=>{
-                console.log(item)
-
+         model.user.findByEmail(req.body.email)
+         .then(item=>{
+             let usuario = item[0]
+          
+             if (usuario) {
+                const passwordOk = bcryptjs.compareSync(req.body.password, usuario.password); // Hasheo de la contraseña
+                if (passwordOk) {
+                    
+            //Como podemos modificar nuestros req.body
+            //delete usuario['password']
+            req.session.usuario = usuario
+                    console.log("usuaario logueado"+ req.session.usuario)
+                    res.redirect('/')
+                }
+                else {
+                    res.redirect('/login')
+                }
+            }
             })
             
         }
@@ -99,6 +113,5 @@ const navigationController = {
 }
 
 
-ingresar()
 
 module.exports = navigationController
