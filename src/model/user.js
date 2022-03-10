@@ -11,7 +11,7 @@ const usersModel = {
             .catch(err => console.error(err))
 
     },
-    findOne: (id) => {
+    findOne: (id) => { 
         return db.users
             .findByPk(id)
             .then((item) => item)

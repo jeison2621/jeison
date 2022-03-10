@@ -12,5 +12,5 @@ fs.readdirSync(__dirname)
     const model = require(path.join(__dirname, file));
     data[file.split('.')[0]] = model;
   });
-
+ 
 module.exports = data;

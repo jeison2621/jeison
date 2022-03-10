@@ -13,7 +13,7 @@ const navigationController = {
             res.render('index', {
                 title: "Parfum Légende", // muestra los datos de los productos en la vista Principal(/)
                 data: item
-            })
+            }) 
         }).catch(err => next(err))
     },
 

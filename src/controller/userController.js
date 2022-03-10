@@ -10,7 +10,7 @@ const userController = {
     newUser: (req, res, next) => {
         res.render('user/newUser')
                     
-    },
+    }, 
     createUser: (req, res) => {
         console.log(req.body)
         model.user.create(
