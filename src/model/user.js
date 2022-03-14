@@ -6,8 +6,8 @@ const usersModel = {
 
     findAll: () => {
         return db.users
-            .findAll({
-                order:[['id','DESC']]
+            .findAll({ 
+               order:[['id','DESC']]
             })
             .then((item) => item)
             .catch(err => console.error(err))

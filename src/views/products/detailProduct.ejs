@@ -9,13 +9,35 @@
 
         <% if (data) { %>
           <section class="seccion-detalle">
-            <h2>
-              <%= data.name %>  $<%= data.price%>
-            </h2>
-            <img src="/img/products/<%= data.image%>" alt="">
-            <h4>
-              <%= data.description%>||<%= data.category%>|| <%= data.amount%>||<%= data.typeamount%>
-            </h4>
+            <article class="contenedor_imagen">
+              <img src="/img/products/<%= data.image%>" alt="">
+
+            </article>
+
+            <article class="contenedor_detalle">
+              <h2><%= data.name %> </h2>
+              <h1>$<%= data.price%></h1>
+              <h3>  Descuento:  </h3>
+              <p><%= data.discount%>%</p>
+              <h3>  Categoria:</h3>
+              <p><%= data.category %> </p>
+              <h3>  Cantidad: </h3>
+              <p><%= data.amount %> <%= data.typeAmount %>  </p>
+              <h3>Descripcion:</h3>
+              <p><%= data.description%> </p>
+              
+
+
+
+
+            </article>
+            
+
+        
+          
+         
+
+
           </section>
           <% } %>
 
@@ -25,3 +47,13 @@
   </body>
 
 </html>
+
+
+
+<!-- <div>
+            
+  <h4>
+    <%= data.description%>||<%= data.category%>|| <%= data.amount%>||<%= data.typeamount%>
+  </h4>
+
+</div> -->
