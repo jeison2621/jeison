@@ -4,6 +4,7 @@ const { navigationController, apiController } = require('../controller');
 const upload = require('../middleware/multermidd')
 const { validationsUsers } = require('../middleware')
 const { acceso } = require('../middleware')
+const {validationLogin} = require ('../middleware/valitations')
 
 
 
@@ -27,7 +28,7 @@ router.get('/register',navigationController.register)
 router.post('/register', upload.single('image'),validationsUsers,navigationController.guardar);
 
 router.get('/login',navigationController.login); 
-router.post('/login', acceso,  navigationController.ingresar);
+router.post('/login', acceso, validationLogin,  navigationController.ingresar);
 
 router.get('/logout',navigationController.logout); 
 
