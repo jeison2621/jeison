@@ -6,34 +6,25 @@ const usersModel = {
 
     findAll: () => {
         return db.users
-            .findAll()
+            .findAll({ 
+               order:[['id','DESC']]
+            })
             .then((item) => item)
             .catch(err => console.error(err))
 
     },
-    findOne: (id) => {
+    findOne: (id) => { 
         return db.users
             .findByPk(id)
             .then((item) => item)
             .catch(err => console.error(err))
-    },
+    },  
     create: (usuario) => {
         return db.users.create(usuario)
             .then((item) => item)
             .catch(err => console.error(err))
-    },
+    },    
 
-
-
-
-
-
-
-
-
-
-
-    
     update: (usuario, id) => {
         return db.users.update(usuario, {
             where: {

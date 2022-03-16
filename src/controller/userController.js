@@ -1,5 +1,5 @@
 const model = require('../model')
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 
 const userController = {
     adminUsers: (req, res, next) => {
@@ -10,7 +10,7 @@ const userController = {
     newUser: (req, res, next) => {
         res.render('user/newUser')
                     
-    },
+    }, 
     createUser: (req, res) => {
         console.log(req.body)
         model.user.create(
@@ -18,7 +18,7 @@ const userController = {
                 name: req.body.nombre,
                 lastname: req.body.apellidos,
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
+                password: bcryptjs.hashSync(req.body.password, 10),
                 avatar: req.file ? req.file.filename: '',
                 roles_id: req.body.rol,
             }
@@ -46,7 +46,7 @@ const userController = {
                 name: req.body.nombre,
                 lastname: req.body.apellidos,
                 email: req.body.email,
-                password: req.body.password,
+                password: bcryptjs.hashSync(req.body.password, 10),
                 avatar: req.file ? req.file.filename: '',
                 roles_id: req.body.rol,
             }, req.params.id)

@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     } else if (req.cookies.email) {
         
         let usuario= model.user.findByEmail(req.cookies.email)
-
+  
         req.session.usuario = usuario;
         res.locals.usuario = usuario;
         return next();

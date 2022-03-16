@@ -7,18 +7,41 @@
     <%- include('../partials/header') %>
       <main>
 
-          <% if (data) { %>
-          <section class="seccion-detalle">            
-          <h2><%= data.name %> <%= data.lastname%></h2>
-          <img src="/img/users/<%= data.avatar%>" alt="">
-          <h4>Email: <%= data.email%></h4>
-          <h5>Rol: <%= data.roles_id%></h5>
-        </section>  
-          <% } %>        
+        <% if (data) { %>
+          <section class="seccion-detalle">
+            <article class="contenedor_imagen">
+              <img src="/img/users/<%= data.avatar%>" alt="">
+
+            </article>
+
+            <article class="contenedor_detalle">
+              <h2><%= data.name %> <%=data.lastname%> </h2>
+              <h1><%= data.email%></h1>
+              <h3>  Tipo de usuario:  </h3>
+              <p><%= data.roles_id%></p>
+              <div class="botones">
+
+                <a href="/admin/users/"><button class="enviar">Volver</button></a>
+                <a href="/admin/users/editUser/<%=data.id%>"><button class="enviar">Editar</button></a>
+              </div>
+
+              
+              </article>
+            
+
         
+          
+         
+
+
+          </section>
+          <% } %>
+
       </main>
 
-         <%- include('../partials/footer') %>
+      <%- include('../partials/footer') %>
   </body>
-  
+
 </html>
+
+
