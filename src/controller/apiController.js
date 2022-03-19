@@ -21,9 +21,19 @@ const apiController = {
                 })
             })
             return res.status(200).json({
+                head: {
+                    "status": 200,
+                    "query": "api/users",
+                    "description": "An array with all products in the database",
+                    "specialMessage": "It's a hard life, no matter what you did, it's keep hard, that's the magic :3"
+                },
                 count: item.length,
                 status: 200,
-                users: usersJson
+                body: {
+                    length: 10,
+                    dataType: "array",
+                    users: usersJson
+                }
             })
         }).catch(err => next(err))
     },
@@ -75,18 +85,18 @@ const apiController = {
             let count = 1
 
             productsJson.forEach(element => {
-              
+
                 if (!totalTypeCategories.find(item => item.type == element.category)) {
                     totalTypeCategories.push(
                         {
                             type: element.category,
                             count: count
-                        })                        
+                        })
                 }
                 else {
                     totalTypeCategories.forEach(item => item.type == element.category ? item.count += 1 : item)
-                }      
-                      
+                }
+
             });
 
             return res.status(200).json({
@@ -140,9 +150,9 @@ const apiController = {
             })
         }).catch(err => next(err))
     },
-    pages: (req, res, next) => {     
+    pages: (req, res, next) => {
         model.product.pages(req.query.id).then(item => {
-             res.send(item)
+            res.send(item)
         }).catch(err => next(err))
     }
 }
