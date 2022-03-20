@@ -90,14 +90,14 @@ const apiController = {
 
             });
 
-            return res.status(200).json({
-                count: item.length,
-                status: 200,
-                totalCategories: totalCategories,
-                allCategories: totalTypeCategories,
-                products: productsJson,
+            return res.status(200).json([
+                "count:", item.length,
+                "status:", 200,
+                "totalCategories:", totalCategories,
+                "allCategories:", totalTypeCategories,
+                "products:", productsJson,
                 //next: 'https://s3-parfum-legende.herokuapp.com/api/products/?page='
-            })
+            ])
         }).catch(err => next(err))
     },
     detailproduct: (req, res, next) => {
