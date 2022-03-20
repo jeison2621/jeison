@@ -20,21 +20,12 @@ const apiController = {
                     detail: 'https://s3-parfum-legende.herokuapp.com/api/users/' + user.dataValues.id
                 })
             })
-            return res.status(200).json({
-                head: {
-                    "status": 200,
-                    "query": "api/users",
-                    "description": "An array with all products in the database",
-                    "specialMessage": "It's a hard life, no matter what you did, it's keep hard, that's the magic :3"
-                },
-                count: item.length,
-                status: 200,
-                body: {
-                    length: 10,
-                    dataType: "array",
-                    users: usersJson
-                }
-            })
+            return res.status(200).json([
+                {
+                    count: item.length
+                }, 
+                    usersJson
+            ])
         }).catch(err => next(err))
     },
     detailuser: (req, res, next) => {
