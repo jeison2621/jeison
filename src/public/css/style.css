@@ -498,6 +498,7 @@ main .administrar-usuarios img{
   width: 100%;
   height: 100%;
   border-radius: 6%;
+  object-fit:unset;
   background: transparent;
 
 
@@ -617,6 +618,7 @@ main .contenedor-imagen{
 main .contenedor-imagen img{
   width: 100%;
   height: 100%;
+  object-fit:cover;
 
 }
 
@@ -917,7 +919,7 @@ main .seccion-detalle{
   width: 100vw;
   height: 100vh;
   
-  object-fit:unset
+  object-fit:
 }
 
 main  .botones {
@@ -974,7 +976,7 @@ justify-content: space-around;
     width: 100%;
     height: 98%;
     
-    object-fit: unset
+    object-fit:cover;
   }
 
 }
