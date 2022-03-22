@@ -936,7 +936,7 @@ justify-content: space-around;
   main .seccion-detalle{
     margin-top: 10px ;
     width: 65%;
-    border-radius: 5px ;
+    border-radius: 5px ; 
     display: flex;
     flex-direction: row;
 
