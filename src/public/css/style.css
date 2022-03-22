@@ -847,14 +847,23 @@ main .contenedor-nombre .contenedor-botones{
 
 .enviar{
   margin: auto;
-  width: 100%;
+  width: 50%;
   background: brown;  ;
   color: aliceblue;
 }
 
+
 .enviar_usuario{
   margin: auto;
   width: 50%;
+  margin-top: 60px;
+  background: brown;  ;
+  color: aliceblue;
+}
+
+.enviar_usuario1{
+  margin: auto;
+  width: 100%;
   margin-top: 60px;
   background: brown;  ;
   color: aliceblue;
